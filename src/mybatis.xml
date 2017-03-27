@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<environments default="mysql_developer">
+	
+		<!-- Oracle环境 -->
+		<environment id="oracle_developer">
+			<!-- MyBatis采用JDBC的事务管理方式 -->
+			<transactionManager type="JDBC"/>
+			<!-- 数据源 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin:@192.168.0.25:1521:orcl"/>
+				<property name="username" value="nicefish"/>
+				<property name="password" value="nicefish"/>
+			</dataSource>
+		</environment>
+		
+		<!-- MySQL环境 -->
+		<environment id="mysql_developer">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3306/nicefish"/>
+				<property name="username" value="root"/>
+				<property name="password" value="123456"/>
+			</dataSource>
+		</environment>
+	</environments>	
+	<mappers>
+		<mapper resource="com/sl/nicefish/mapping/UserMapper.xml"/>
+	</mappers>
+</configuration>
