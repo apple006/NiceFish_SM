@@ -137,7 +137,7 @@ http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 	<bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">
 		<property name="patterns">
 			<list>
-				<value>com.nicefish.service.*</value>
+				<value>com.sl.nicefish.service.*</value>
 			</list>
 		</property>
 	</bean>
