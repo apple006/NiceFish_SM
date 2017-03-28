@@ -13,8 +13,8 @@
   http://www.springframework.org/schema/aop 
 http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
   	<!-- 自动扫描 加入过滤配置是为了使mybatis 的事务起作用-->
- 	<context:component-scan base-package="com.sl.nicefish">
- 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+ 	<context:component-scan base-package="com.sl.nicefish.service..*">
+ 		<!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/> -->
  	</context:component-scan>
  	
  	<!-- 引入属性文件 -->

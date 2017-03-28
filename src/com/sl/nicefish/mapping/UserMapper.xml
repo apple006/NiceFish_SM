@@ -220,4 +220,22 @@
       LEAVE_TIME = #{leaveTime,jdbcType=TIMESTAMP}
     where USER_ID = #{userId,jdbcType=VARCHAR}
   </update>
+  <!-- 查询所有用户 -->
+  <select id="getList" resultMap="BaseResultMap">
+  	select 
+  		<include refid="Base_Column_List"/>
+  	from user
+  </select>
+  <!-- 通过激活码查找 -->
+  <select id="getByCode" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select 
+  		<include refid="Base_Column_List"/>
+  	from user where CODE = #{code,jdbcType=VARCHAR}
+  </select>
+  <!-- 通过用户名查找 -->
+  <select id="getByUserName" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select 
+  		<include refid="Base_Column_List"/>
+  	from user where USER_NAME = #{userName,jdbcType=VARCHAR}
+  </select>
 </mapper>
