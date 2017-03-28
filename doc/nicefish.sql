@@ -100,8 +100,6 @@ CREATE TABLE `role` (
   PRIMARY KEY (`ROLE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色';
 
-
--- - 代发的撒范德萨 - ---
 -- ----------------------------
 -- Records of role
 -- ----------------------------
