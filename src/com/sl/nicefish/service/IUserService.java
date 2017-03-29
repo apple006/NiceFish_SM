@@ -25,7 +25,12 @@ public interface IUserService {
 	 * @return
 	 */
 	User getUserByCode(String code);
-	
+	/**
+	 * 通过用户名查找用户
+	 * @param userName 
+	 * @return
+	 */
+	User getUserByUserName(String userName);
 	/**
 	 * 新增用户
 	 * @param user

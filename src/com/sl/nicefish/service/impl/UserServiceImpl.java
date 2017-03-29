@@ -45,4 +45,9 @@ public class UserServiceImpl implements IUserService {
 		return this.userMapper.deleteByPrimaryKey(userId);
 	}
 
+	@Override
+	public User getUserByUserName(String userName) {
+		return this.userMapper.getByUserName(userName);
+	}
+
 }
