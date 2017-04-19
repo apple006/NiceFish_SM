@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,21 +24,18 @@ public class AccessController extends BaseController{
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> login(@PathVariable String jsonValues, HttpSession session){
+	public Map<String, Object> login(@RequestBody User user, HttpSession session){
 		
-		System.out.println(jsonValues);
-		//System.out.println(password);
-		/*User userDB = userService.getUserById(userName);
+		User userDB = userService.getUserById(user.getUpId());
 		
 		if(null == userDB){
 			return this.ajaxFailureResponse("用户名或者密码错误");
 		}
-		if(!userDB.getPassword().equals(password)){
+		if(!userDB.getPassword().equals(user.getPassword())){
 			return this.ajaxFailureResponse("用户名或者密码错误");
 		}
 		session.setAttribute(ConstSessionName.UserInfo, userDB);
-		return this.ajaxSuccessResponse();*/
-		return null;
+		return this.ajaxSuccessResponse();
 	}
 	
 	@RequestMapping(value="/register", method=RequestMethod.GET)

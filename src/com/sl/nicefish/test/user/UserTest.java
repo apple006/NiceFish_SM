@@ -32,12 +32,12 @@ public class UserTest {
 	public void test1(){
 		User u = new User();
 		u.setUserId(UUIDUtil.generate());
-		u.setUserName("zhaoyun");
-		u.setNickName("xiaozhao");
-		u.setPassword("1231245");
-		u.setNickName("战神赵子龙");
-		u.setRealName("赵云");
-		u.setCellPhone("1234567889");
+		u.setUserName("zhangfei");
+		u.setNickName("xiaozhang");
+		u.setPassword("123456");
+		u.setNickName("张翼德");
+		u.setRealName("张飞");
+		u.setCellPhone("110120");
 		System.out.println(userService.insert(u));
 	}
 	

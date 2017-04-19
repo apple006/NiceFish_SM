@@ -37,9 +37,12 @@ public class UserController {
 		Page<?> page = PageHelper.startPage(pageIndex, pageSize, true);
 		//获得查询结果
 		List<User> list = userSerivce.getList();
+		// 执行查询并分页,TbItemExample是逆向工程自动生成的，用来进行条件查询，这里不设置则表示无条件
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("total", page.getTotal());//总数
 		map.put("list", list);
+		map.put("pageSize", page.getPages());
+		map.put("pageNum", page.getPageNum());
 		System.out.println(objectMapper.writeValueAsString(map));
 		return objectMapper.writeValueAsString(map);
 	}
