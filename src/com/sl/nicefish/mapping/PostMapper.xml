@@ -34,10 +34,26 @@
     from post
     where POST_ID = #{postId,jdbcType=VARCHAR}
   </select>
+  <!-- 查询所有帖子 -->
+  <select id="getList" resultMap="BaseResultMap">
+  	select 
+  		<include refid="Base_Column_List"/>
+  	from post
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from post
     where POST_ID = #{postId,jdbcType=VARCHAR}
   </delete>
+  
+  <!-- 批量删除 -->
+  <delete id="batchDeleteByPrimaryKeys" parameterType="java.lang.String">
+  	delete from post 
+  	where POST_ID in
+  	<foreach item="postIdItem" collection="array" open="(" separator="," close=")">
+  		#postIdItem
+  	</foreach>
+  </delete>
+  
   <insert id="insert" parameterType="com.sl.nicefish.pojo.Post" >
     insert into post (POST_ID, POST_TITLE, POST_TIME, 
       POST_TYPE, LAST_MODIFY_TIME, READ_TIMES, 
@@ -219,4 +235,5 @@
       NICK_NAME = #{nickName,jdbcType=VARCHAR}
     where POST_ID = #{postId,jdbcType=VARCHAR}
   </update>
+  	
 </mapper>

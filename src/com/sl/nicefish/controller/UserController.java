@@ -15,10 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sl.nicefish.pojo.User;
 import com.sl.nicefish.service.IUserService;
+import com.sl.nicefish.util.PageUtil;
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -32,19 +35,24 @@ public class UserController {
 	
 	@RequestMapping(value = "/listpage/{pageIndex}", method = RequestMethod.GET, produces="text/html;charset=UTF-8")
 	@ResponseBody
-	public String listPage(@PathVariable int pageIndex, Model model,HttpServletResponse response) throws Exception{
+	public String listPage(@PathVariable int pageIndex, Model model) throws Exception{
 		//开启PageHelper
 		Page<?> page = PageHelper.startPage(pageIndex, pageSize, true);
 		//获得查询结果
 		List<User> list = userSerivce.getList();
-		// 执行查询并分页,TbItemExample是逆向工程自动生成的，用来进行条件查询，这里不设置则表示无条件
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("total", page.getTotal());//总数
-		map.put("list", list);
-		map.put("pageSize", page.getPages());
-		map.put("pageNum", page.getPageNum());
-		System.out.println(objectMapper.writeValueAsString(map));
-		return objectMapper.writeValueAsString(map);
+		System.out.println(page);
+//		Map<String, Object> map = PageUtil.pageInfo(page);
+//		map.put("data", list);
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("total", page.getTotal());//总条数
+//		map.put("data", list);
+//		map.put("pageSize", page.getPageSize());//页容量
+//		map.put("pageNum", page.getPageNum());//当前页数
+//		map.put("pageCount", page.getPages());//总页数
+//		String jsonMap = JSONObject.toJSONString(map);
+		
+//		System.out.println(objectMapper.writeValueAsString(map));
+		return PageUtil.jsonStringResult(page, list);
 	}
 	
 	/**
