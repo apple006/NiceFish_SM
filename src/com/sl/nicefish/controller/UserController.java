@@ -21,7 +21,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sl.nicefish.pojo.User;
 import com.sl.nicefish.service.IUserService;
-import com.sl.nicefish.util.PageUtil;
+import com.sl.nicefish.util.ResultUtil;
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -52,7 +52,7 @@ public class UserController {
 //		String jsonMap = JSONObject.toJSONString(map);
 		
 //		System.out.println(objectMapper.writeValueAsString(map));
-		return PageUtil.jsonStringResult(page, list);
+		return ResultUtil.jsonStringResult(page, list);
 	}
 	
 	/**

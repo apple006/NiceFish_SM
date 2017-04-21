@@ -14,7 +14,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.sl.nicefish.pojo.Post;
 import com.sl.nicefish.service.IPostService;
-import com.sl.nicefish.util.PageUtil;
+import com.sl.nicefish.util.ResultUtil;
 
 @Controller
 @RequestMapping("/post")
@@ -35,9 +35,14 @@ public class PostController {
 		System.out.println("======="+list.toString());
 		System.out.println(page);
 //	
-		return PageUtil.jsonStringResult(page, list);
+		return ResultUtil.jsonStringResult(page, list);
 	}
 	
-	
+	@RequestMapping(value="/detail/{postId}", method=RequestMethod.GET, produces="text/html;charset=UTF-8")
+	@ResponseBody
+	public String postDetail(@PathVariable String postId, Model model) {
+		Post post = postService.getById(postId);
+		return ResultUtil.jsonDetail(post);
+	}
 	
 }

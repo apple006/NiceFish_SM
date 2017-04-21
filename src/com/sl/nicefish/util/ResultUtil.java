@@ -7,7 +7,7 @@ import java.util.Map;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.Page;
 
-public class PageUtil {
+public class ResultUtil {
 	
 	/**
 	 * 分页信息
@@ -62,6 +62,24 @@ public class PageUtil {
 	 */
 	public static String jsonStringResult(Page<?> page, List<?> list){
 		Map<String,Object> map = mapResult(page, list);
+		return JSONObject.toJSONString(map);
+	}
+	
+	/**
+	 * 返回详情数据
+	 * @param obj
+	 * @return
+	 */
+	public static String jsonDetail(Object obj){
+		Map<String, Object> map = new HashMap<>();
+		if(obj !=null){
+			map.put("data", obj);
+			map.put("info", "success");
+		}else {
+			map.put("data", "无数据");
+			map.put("info", "fail");
+		}
+		
 		return JSONObject.toJSONString(map);
 	}
 }

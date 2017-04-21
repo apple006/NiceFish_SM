@@ -34,14 +34,20 @@ public class PostTest {
 		p.setLikedTimes(100);
 		p.setReadTimes(99);
 		p.setLastModifyTime(new Date());
+		p.setEnableComment(1000);
 		int i = postService.insert(p);
 		System.out.println(i);
 	}
 	
 	@Test
-	public void test0(){
-		for (int i = 11; i < 30; i++) {
-			insert("大战长坂坡"+i,"dsafsadfsdafsdafdsafsdafsdafsdafsda大战长坂坡"+i);
+	public void test0()  {
+		for (int i = 0; i < 50; i++) {
+			try {
+				Thread.sleep(1000);
+				insert("大战长坂坡"+i,"dsafsadfsdafsdafdsafsdafsdafsdafsda大战长坂坡"+i);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
