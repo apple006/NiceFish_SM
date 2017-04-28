@@ -1,33 +1,33 @@
 package com.sl.nicefish.pojo;
 
 public class Permission {
-    private String permissionId;
+    private String permissionid;
 
-    private String permissionCode;
+    private String permissioncode;
 
-    private String permissionDesc;
+    private String permissiondesc;
 
-    public String getPermissionId() {
-        return permissionId;
+    public String getPermissionid() {
+        return permissionid;
     }
 
-    public void setPermissionId(String permissionId) {
-        this.permissionId = permissionId == null ? null : permissionId.trim();
+    public void setPermissionid(String permissionid) {
+        this.permissionid = permissionid == null ? null : permissionid.trim();
     }
 
-    public String getPermissionCode() {
-        return permissionCode;
+    public String getPermissioncode() {
+        return permissioncode;
     }
 
-    public void setPermissionCode(String permissionCode) {
-        this.permissionCode = permissionCode == null ? null : permissionCode.trim();
+    public void setPermissioncode(String permissioncode) {
+        this.permissioncode = permissioncode == null ? null : permissioncode.trim();
     }
 
-    public String getPermissionDesc() {
-        return permissionDesc;
+    public String getPermissiondesc() {
+        return permissiondesc;
     }
 
-    public void setPermissionDesc(String permissionDesc) {
-        this.permissionDesc = permissionDesc == null ? null : permissionDesc.trim();
+    public void setPermissiondesc(String permissiondesc) {
+        this.permissiondesc = permissiondesc == null ? null : permissiondesc.trim();
     }
 }

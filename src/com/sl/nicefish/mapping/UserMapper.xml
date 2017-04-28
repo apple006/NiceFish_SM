@@ -2,240 +2,233 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sl.nicefish.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="com.sl.nicefish.pojo.User" >
-    <id column="USER_ID" property="userId" jdbcType="VARCHAR" />
-    <result column="CODE" property="code" jdbcType="VARCHAR" />
-    <result column="REAL_NAME" property="realName" jdbcType="VARCHAR" />
-    <result column="NICK_NAME" property="nickName" jdbcType="VARCHAR" />
-    <result column="E_NAME" property="eName" jdbcType="VARCHAR" />
-    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
-    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <id column="UserId" property="userid" jdbcType="VARCHAR" />
+    <result column="UserName" property="username" jdbcType="VARCHAR" />
+    <result column="UserRealName" property="userrealname" jdbcType="VARCHAR" />
+    <result column="NicKName" property="nickname" jdbcType="VARCHAR" />
+    <result column="EName" property="ename" jdbcType="VARCHAR" />
+    <result column="Password" property="password" jdbcType="VARCHAR" />
+    <result column="Email" property="email" jdbcType="VARCHAR" />
     <result column="QQ" property="qq" jdbcType="VARCHAR" />
-    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
-    <result column="CELL_PHONE" property="cellPhone" jdbcType="VARCHAR" />
-    <result column="USER_DESC" property="userDesc" jdbcType="VARCHAR" />
-    <result column="UP_ID" property="upId" jdbcType="VARCHAR" />
-    <result column="STATUS" property="status" jdbcType="INTEGER" />
-    <result column="TYPE" property="type" jdbcType="INTEGER" />
-    <result column="JOIN_TIME" property="joinTime" jdbcType="TIMESTAMP" />
-    <result column="LEAVE_TIME" property="leaveTime" jdbcType="TIMESTAMP" />
+    <result column="CellPhone" property="cellphone" jdbcType="VARCHAR" />
+    <result column="UserDesc" property="userdesc" jdbcType="VARCHAR" />
+    <result column="UpId" property="upid" jdbcType="VARCHAR" />
+    <result column="Type" property="type" jdbcType="INTEGER" />
+    <result column="Status" property="status" jdbcType="INTEGER" />
+    <result column="Code" property="code" jdbcType="VARCHAR" />
+    <result column="JoinTime" property="jointime" jdbcType="TIMESTAMP" />
+    <result column="LeaveTime" property="leavetime" jdbcType="TIMESTAMP" />
+    <result column="RegisterTime" property="registertime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    USER_ID, CODE, REAL_NAME, NICK_NAME, E_NAME, USER_NAME, PASSWORD, QQ, EMAIL, CELL_PHONE, 
-    USER_DESC, UP_ID, STATUS, TYPE, JOIN_TIME, LEAVE_TIME
+    UserId, UserName, UserRealName, NicKName, EName, Password, Email, QQ, CellPhone, 
+    UserDesc, UpId, Type, Status, Code, JoinTime, LeaveTime, RegisterTime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from user
-    where USER_ID = #{userId,jdbcType=VARCHAR}
+    where UserId = #{userid,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from user
-    where USER_ID = #{userId,jdbcType=VARCHAR}
+    where UserId = #{userid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.sl.nicefish.pojo.User" >
-    insert into user (USER_ID, CODE, REAL_NAME, 
-      NICK_NAME, E_NAME, USER_NAME, 
-      PASSWORD, QQ, EMAIL, 
-      CELL_PHONE, USER_DESC, UP_ID, 
-      STATUS, TYPE, JOIN_TIME, 
-      LEAVE_TIME)
-    values (#{userId,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
-      #{nickName,jdbcType=VARCHAR}, #{eName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{cellPhone,jdbcType=VARCHAR}, #{userDesc,jdbcType=VARCHAR}, #{upId,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{joinTime,jdbcType=TIMESTAMP}, 
-      #{leaveTime,jdbcType=TIMESTAMP})
+    insert into user (UserId, UserName, UserRealName, 
+      NicKName, EName, Password, 
+      Email, QQ, CellPhone, 
+      UserDesc, UpId, Type, 
+      Status, Code, JoinTime, 
+      LeaveTime, RegisterTime)
+    values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{userrealname,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{ename,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{cellphone,jdbcType=VARCHAR}, 
+      #{userdesc,jdbcType=VARCHAR}, #{upid,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{jointime,jdbcType=TIMESTAMP}, 
+      #{leavetime,jdbcType=TIMESTAMP}, #{registertime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.sl.nicefish.pojo.User" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
-        USER_ID,
+      <if test="userid != null" >
+        UserId,
       </if>
-      <if test="code != null" >
-        CODE,
+      <if test="username != null" >
+        UserName,
       </if>
-      <if test="realName != null" >
-        REAL_NAME,
+      <if test="userrealname != null" >
+        UserRealName,
       </if>
-      <if test="nickName != null" >
-        NICK_NAME,
+      <if test="nickname != null" >
+        NicKName,
       </if>
-      <if test="eName != null" >
-        E_NAME,
-      </if>
-      <if test="userName != null" >
-        USER_NAME,
+      <if test="ename != null" >
+        EName,
       </if>
       <if test="password != null" >
-        PASSWORD,
+        Password,
+      </if>
+      <if test="email != null" >
+        Email,
       </if>
       <if test="qq != null" >
         QQ,
       </if>
-      <if test="email != null" >
-        EMAIL,
+      <if test="cellphone != null" >
+        CellPhone,
       </if>
-      <if test="cellPhone != null" >
-        CELL_PHONE,
+      <if test="userdesc != null" >
+        UserDesc,
       </if>
-      <if test="userDesc != null" >
-        USER_DESC,
-      </if>
-      <if test="upId != null" >
-        UP_ID,
-      </if>
-      <if test="status != null" >
-        STATUS,
+      <if test="upid != null" >
+        UpId,
       </if>
       <if test="type != null" >
-        TYPE,
+        Type,
       </if>
-      <if test="joinTime != null" >
-        JOIN_TIME,
+      <if test="status != null" >
+        Status,
       </if>
-      <if test="leaveTime != null" >
-        LEAVE_TIME,
+      <if test="code != null" >
+        Code,
+      </if>
+      <if test="jointime != null" >
+        JoinTime,
+      </if>
+      <if test="leavetime != null" >
+        LeaveTime,
+      </if>
+      <if test="registertime != null" >
+        RegisterTime,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
-        #{userId,jdbcType=VARCHAR},
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
       </if>
-      <if test="code != null" >
-        #{code,jdbcType=VARCHAR},
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
       </if>
-      <if test="realName != null" >
-        #{realName,jdbcType=VARCHAR},
+      <if test="userrealname != null" >
+        #{userrealname,jdbcType=VARCHAR},
       </if>
-      <if test="nickName != null" >
-        #{nickName,jdbcType=VARCHAR},
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
       </if>
-      <if test="eName != null" >
-        #{eName,jdbcType=VARCHAR},
-      </if>
-      <if test="userName != null" >
-        #{userName,jdbcType=VARCHAR},
+      <if test="ename != null" >
+        #{ename,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="qq != null" >
-        #{qq,jdbcType=VARCHAR},
-      </if>
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
       </if>
-      <if test="cellPhone != null" >
-        #{cellPhone,jdbcType=VARCHAR},
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
       </if>
-      <if test="userDesc != null" >
-        #{userDesc,jdbcType=VARCHAR},
+      <if test="cellphone != null" >
+        #{cellphone,jdbcType=VARCHAR},
       </if>
-      <if test="upId != null" >
-        #{upId,jdbcType=VARCHAR},
+      <if test="userdesc != null" >
+        #{userdesc,jdbcType=VARCHAR},
       </if>
-      <if test="status != null" >
-        #{status,jdbcType=INTEGER},
+      <if test="upid != null" >
+        #{upid,jdbcType=VARCHAR},
       </if>
       <if test="type != null" >
         #{type,jdbcType=INTEGER},
       </if>
-      <if test="joinTime != null" >
-        #{joinTime,jdbcType=TIMESTAMP},
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
       </if>
-      <if test="leaveTime != null" >
-        #{leaveTime,jdbcType=TIMESTAMP},
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="jointime != null" >
+        #{jointime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leavetime != null" >
+        #{leavetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registertime != null" >
+        #{registertime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.sl.nicefish.pojo.User" >
     update user
     <set >
-      <if test="code != null" >
-        CODE = #{code,jdbcType=VARCHAR},
+      <if test="username != null" >
+        UserName = #{username,jdbcType=VARCHAR},
       </if>
-      <if test="realName != null" >
-        REAL_NAME = #{realName,jdbcType=VARCHAR},
+      <if test="userrealname != null" >
+        UserRealName = #{userrealname,jdbcType=VARCHAR},
       </if>
-      <if test="nickName != null" >
-        NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      <if test="nickname != null" >
+        NicKName = #{nickname,jdbcType=VARCHAR},
       </if>
-      <if test="eName != null" >
-        E_NAME = #{eName,jdbcType=VARCHAR},
-      </if>
-      <if test="userName != null" >
-        USER_NAME = #{userName,jdbcType=VARCHAR},
+      <if test="ename != null" >
+        EName = #{ename,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
-        PASSWORD = #{password,jdbcType=VARCHAR},
+        Password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        Email = #{email,jdbcType=VARCHAR},
       </if>
       <if test="qq != null" >
         QQ = #{qq,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
-        EMAIL = #{email,jdbcType=VARCHAR},
+      <if test="cellphone != null" >
+        CellPhone = #{cellphone,jdbcType=VARCHAR},
       </if>
-      <if test="cellPhone != null" >
-        CELL_PHONE = #{cellPhone,jdbcType=VARCHAR},
+      <if test="userdesc != null" >
+        UserDesc = #{userdesc,jdbcType=VARCHAR},
       </if>
-      <if test="userDesc != null" >
-        USER_DESC = #{userDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="upId != null" >
-        UP_ID = #{upId,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        STATUS = #{status,jdbcType=INTEGER},
+      <if test="upid != null" >
+        UpId = #{upid,jdbcType=VARCHAR},
       </if>
       <if test="type != null" >
-        TYPE = #{type,jdbcType=INTEGER},
+        Type = #{type,jdbcType=INTEGER},
       </if>
-      <if test="joinTime != null" >
-        JOIN_TIME = #{joinTime,jdbcType=TIMESTAMP},
+      <if test="status != null" >
+        Status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="leaveTime != null" >
-        LEAVE_TIME = #{leaveTime,jdbcType=TIMESTAMP},
+      <if test="code != null" >
+        Code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="jointime != null" >
+        JoinTime = #{jointime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leavetime != null" >
+        LeaveTime = #{leavetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registertime != null" >
+        RegisterTime = #{registertime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where USER_ID = #{userId,jdbcType=VARCHAR}
+    where UserId = #{userid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sl.nicefish.pojo.User" >
     update user
-    set CODE = #{code,jdbcType=VARCHAR},
-      REAL_NAME = #{realName,jdbcType=VARCHAR},
-      NICK_NAME = #{nickName,jdbcType=VARCHAR},
-      E_NAME = #{eName,jdbcType=VARCHAR},
-      USER_NAME = #{userName,jdbcType=VARCHAR},
-      PASSWORD = #{password,jdbcType=VARCHAR},
+    set UserName = #{username,jdbcType=VARCHAR},
+      UserRealName = #{userrealname,jdbcType=VARCHAR},
+      NicKName = #{nickname,jdbcType=VARCHAR},
+      EName = #{ename,jdbcType=VARCHAR},
+      Password = #{password,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
       QQ = #{qq,jdbcType=VARCHAR},
-      EMAIL = #{email,jdbcType=VARCHAR},
-      CELL_PHONE = #{cellPhone,jdbcType=VARCHAR},
-      USER_DESC = #{userDesc,jdbcType=VARCHAR},
-      UP_ID = #{upId,jdbcType=VARCHAR},
-      STATUS = #{status,jdbcType=INTEGER},
-      TYPE = #{type,jdbcType=INTEGER},
-      JOIN_TIME = #{joinTime,jdbcType=TIMESTAMP},
-      LEAVE_TIME = #{leaveTime,jdbcType=TIMESTAMP}
-    where USER_ID = #{userId,jdbcType=VARCHAR}
+      CellPhone = #{cellphone,jdbcType=VARCHAR},
+      UserDesc = #{userdesc,jdbcType=VARCHAR},
+      UpId = #{upid,jdbcType=VARCHAR},
+      Type = #{type,jdbcType=INTEGER},
+      Status = #{status,jdbcType=INTEGER},
+      Code = #{code,jdbcType=VARCHAR},
+      JoinTime = #{jointime,jdbcType=TIMESTAMP},
+      LeaveTime = #{leavetime,jdbcType=TIMESTAMP},
+      RegisterTime = #{registertime,jdbcType=TIMESTAMP}
+    where UserId = #{userid,jdbcType=VARCHAR}
   </update>
-  <!-- 查询所有用户 -->
-  <select id="getList" resultMap="BaseResultMap">
-  	select 
-  		<include refid="Base_Column_List"/>
-  	from user
-  </select>
-  <!-- 通过激活码查找 -->
-  <select id="getByCode" resultMap="BaseResultMap" parameterType="java.lang.String">
-  	select 
-  		<include refid="Base_Column_List"/>
-  	from user where CODE = #{code,jdbcType=VARCHAR}
-  </select>
-  <!-- 通过用户名查找 -->
-  <select id="getByUserName" resultMap="BaseResultMap" parameterType="java.lang.String">
-  	select 
-  		<include refid="Base_Column_List"/>
-  	from user where USER_NAME = #{userName,jdbcType=VARCHAR}
-  </select>
 </mapper>

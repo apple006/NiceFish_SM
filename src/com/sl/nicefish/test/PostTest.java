@@ -23,13 +23,13 @@ public class PostTest {
 	public void insert(String title,String content){
 		Post p = new Post();
 		p.setPostId(UUIDUtil.generate());
-		p.setNickName("张翼德");
+		p.setNickname("张翼德");
 		p.setPostTitle(title);
 		p.setPostContent(content);
-		p.setPostTime(new Date());
+		p.setCreateTime(new Date());
 		p.setStatus(1);
 		p.setUserId("8d2a7444767f4051a0628b02e45b3e79");
-		p.setPostType(2);
+		p.setIsOriginal(1);
 		p.setUserName("zhangfei");
 		p.setLikedTimes(100);
 		p.setReadTimes(99);

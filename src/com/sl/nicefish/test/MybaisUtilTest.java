@@ -31,7 +31,7 @@ public class MybaisUtilTest {
 			u.setNickName("小飞飞");
 			u.setPassword("892295834");
 			
-			u.setRealName("张飞");
+			u.setUserRealName("张飞");
 			
 			int i = userMapper.insertSelective(u);
 			session.commit();
@@ -55,7 +55,7 @@ public class MybaisUtilTest {
 	public void test1() {
 		Properties pro = new Properties();
 		try {
-			FileInputStream fis = new FileInputStream("config/jdbc.properties");
+			FileInputStream fis = new FileInputStream("classpath:config/jdbc.properties");
 			pro.load(fis);
 			fis.close();
 		} catch (Exception e) {

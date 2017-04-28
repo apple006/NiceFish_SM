@@ -2,26 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sl.nicefish.dao.CommentMapper" >
   <resultMap id="BaseResultMap" type="com.sl.nicefish.pojo.Comment" >
-    <id column="COMMENT_ID" property="commentId" jdbcType="VARCHAR" />
-    <result column="P_ID" property="pId" jdbcType="VARCHAR" />
-    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
-    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
-    <result column="NICK_NAME" property="nickName" jdbcType="VARCHAR" />
-    <result column="COMMENT_NAME" property="commentName" jdbcType="VARCHAR" />
-    <result column="COMMENT_IP" property="commentIp" jdbcType="VARCHAR" />
-    <result column="COMMENT_TIME" property="commentTime" jdbcType="TIMESTAMP" />
-    <result column="POST_ID" property="postId" jdbcType="VARCHAR" />
-    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <id column=" CommentId" property="commentid" jdbcType="VARCHAR" />
+    <result column="UserId" property="userid" jdbcType="VARCHAR" />
+    <result column="UserName" property="username" jdbcType="VARCHAR" />
+    <result column="NickName" property="nickname" jdbcType="VARCHAR" />
+    <result column="VisitorName" property="visitorname" jdbcType="VARCHAR" />
+    <result column="CommentIP" property="commentip" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="PostId" property="postid" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.sl.nicefish.pojo.Comment" extends="BaseResultMap" >
-    <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+    <result column="Content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    COMMENT_ID, P_ID, USER_ID, USER_NAME, NICK_NAME, COMMENT_NAME, COMMENT_IP, COMMENT_TIME, 
-    POST_ID, STATUS
+    " CommentId", UserId, UserName, NickName, VisitorName, CommentIP, CreateTime, PostId, 
+    status
   </sql>
   <sql id="Blob_Column_List" >
-    CONTENT
+    Content
   </sql>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
     select 
@@ -29,86 +28,80 @@
     ,
     <include refid="Blob_Column_List" />
     from comment
-    where COMMENT_ID = #{commentId,jdbcType=VARCHAR}
+    where " CommentId" = #{commentid,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from comment
-    where COMMENT_ID = #{commentId,jdbcType=VARCHAR}
+    where " CommentId" = #{commentid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.sl.nicefish.pojo.Comment" >
-    insert into comment (COMMENT_ID, P_ID, USER_ID, 
-      USER_NAME, NICK_NAME, COMMENT_NAME, 
-      COMMENT_IP, COMMENT_TIME, POST_ID, 
-      STATUS, CONTENT)
-    values (#{commentId,jdbcType=VARCHAR}, #{pId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
-      #{userName,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{commentName,jdbcType=VARCHAR}, 
-      #{commentIp,jdbcType=VARCHAR}, #{commentTime,jdbcType=TIMESTAMP}, #{postId,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
+    insert into comment (" CommentId", UserId, UserName, 
+      NickName, VisitorName, CommentIP, 
+      CreateTime, PostId, status, 
+      Content)
+    values (#{commentid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{visitorname,jdbcType=VARCHAR}, #{commentip,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{postid,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sl.nicefish.pojo.Comment" >
     insert into comment
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="commentId != null" >
-        COMMENT_ID,
+      <if test="commentid != null" >
+        " CommentId",
       </if>
-      <if test="pId != null" >
-        P_ID,
+      <if test="userid != null" >
+        UserId,
       </if>
-      <if test="userId != null" >
-        USER_ID,
+      <if test="username != null" >
+        UserName,
       </if>
-      <if test="userName != null" >
-        USER_NAME,
+      <if test="nickname != null" >
+        NickName,
       </if>
-      <if test="nickName != null" >
-        NICK_NAME,
+      <if test="visitorname != null" >
+        VisitorName,
       </if>
-      <if test="commentName != null" >
-        COMMENT_NAME,
+      <if test="commentip != null" >
+        CommentIP,
       </if>
-      <if test="commentIp != null" >
-        COMMENT_IP,
+      <if test="createtime != null" >
+        CreateTime,
       </if>
-      <if test="commentTime != null" >
-        COMMENT_TIME,
-      </if>
-      <if test="postId != null" >
-        POST_ID,
+      <if test="postid != null" >
+        PostId,
       </if>
       <if test="status != null" >
-        STATUS,
+        status,
       </if>
       <if test="content != null" >
-        CONTENT,
+        Content,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="commentId != null" >
-        #{commentId,jdbcType=VARCHAR},
+      <if test="commentid != null" >
+        #{commentid,jdbcType=VARCHAR},
       </if>
-      <if test="pId != null" >
-        #{pId,jdbcType=VARCHAR},
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=VARCHAR},
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
       </if>
-      <if test="userName != null" >
-        #{userName,jdbcType=VARCHAR},
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
       </if>
-      <if test="nickName != null" >
-        #{nickName,jdbcType=VARCHAR},
+      <if test="visitorname != null" >
+        #{visitorname,jdbcType=VARCHAR},
       </if>
-      <if test="commentName != null" >
-        #{commentName,jdbcType=VARCHAR},
+      <if test="commentip != null" >
+        #{commentip,jdbcType=VARCHAR},
       </if>
-      <if test="commentIp != null" >
-        #{commentIp,jdbcType=VARCHAR},
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="commentTime != null" >
-        #{commentTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="postId != null" >
-        #{postId,jdbcType=VARCHAR},
+      <if test="postid != null" >
+        #{postid,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
@@ -121,64 +114,59 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.sl.nicefish.pojo.Comment" >
     update comment
     <set >
-      <if test="pId != null" >
-        P_ID = #{pId,jdbcType=VARCHAR},
+      <if test="userid != null" >
+        UserId = #{userid,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null" >
-        USER_ID = #{userId,jdbcType=VARCHAR},
+      <if test="username != null" >
+        UserName = #{username,jdbcType=VARCHAR},
       </if>
-      <if test="userName != null" >
-        USER_NAME = #{userName,jdbcType=VARCHAR},
+      <if test="nickname != null" >
+        NickName = #{nickname,jdbcType=VARCHAR},
       </if>
-      <if test="nickName != null" >
-        NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      <if test="visitorname != null" >
+        VisitorName = #{visitorname,jdbcType=VARCHAR},
       </if>
-      <if test="commentName != null" >
-        COMMENT_NAME = #{commentName,jdbcType=VARCHAR},
+      <if test="commentip != null" >
+        CommentIP = #{commentip,jdbcType=VARCHAR},
       </if>
-      <if test="commentIp != null" >
-        COMMENT_IP = #{commentIp,jdbcType=VARCHAR},
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="commentTime != null" >
-        COMMENT_TIME = #{commentTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="postId != null" >
-        POST_ID = #{postId,jdbcType=VARCHAR},
+      <if test="postid != null" >
+        PostId = #{postid,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
-        STATUS = #{status,jdbcType=INTEGER},
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="content != null" >
-        CONTENT = #{content,jdbcType=LONGVARCHAR},
+        Content = #{content,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where COMMENT_ID = #{commentId,jdbcType=VARCHAR}
+    where " CommentId" = #{commentid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sl.nicefish.pojo.Comment" >
     update comment
-    set P_ID = #{pId,jdbcType=VARCHAR},
-      USER_ID = #{userId,jdbcType=VARCHAR},
-      USER_NAME = #{userName,jdbcType=VARCHAR},
-      NICK_NAME = #{nickName,jdbcType=VARCHAR},
-      COMMENT_NAME = #{commentName,jdbcType=VARCHAR},
-      COMMENT_IP = #{commentIp,jdbcType=VARCHAR},
-      COMMENT_TIME = #{commentTime,jdbcType=TIMESTAMP},
-      POST_ID = #{postId,jdbcType=VARCHAR},
-      STATUS = #{status,jdbcType=INTEGER},
-      CONTENT = #{content,jdbcType=LONGVARCHAR}
-    where COMMENT_ID = #{commentId,jdbcType=VARCHAR}
+    set UserId = #{userid,jdbcType=VARCHAR},
+      UserName = #{username,jdbcType=VARCHAR},
+      NickName = #{nickname,jdbcType=VARCHAR},
+      VisitorName = #{visitorname,jdbcType=VARCHAR},
+      CommentIP = #{commentip,jdbcType=VARCHAR},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      PostId = #{postid,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      Content = #{content,jdbcType=LONGVARCHAR}
+    where " CommentId" = #{commentid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sl.nicefish.pojo.Comment" >
     update comment
-    set P_ID = #{pId,jdbcType=VARCHAR},
-      USER_ID = #{userId,jdbcType=VARCHAR},
-      USER_NAME = #{userName,jdbcType=VARCHAR},
-      NICK_NAME = #{nickName,jdbcType=VARCHAR},
-      COMMENT_NAME = #{commentName,jdbcType=VARCHAR},
-      COMMENT_IP = #{commentIp,jdbcType=VARCHAR},
-      COMMENT_TIME = #{commentTime,jdbcType=TIMESTAMP},
-      POST_ID = #{postId,jdbcType=VARCHAR},
-      STATUS = #{status,jdbcType=INTEGER}
-    where COMMENT_ID = #{commentId,jdbcType=VARCHAR}
+    set UserId = #{userid,jdbcType=VARCHAR},
+      UserName = #{username,jdbcType=VARCHAR},
+      NickName = #{nickname,jdbcType=VARCHAR},
+      VisitorName = #{visitorname,jdbcType=VARCHAR},
+      CommentIP = #{commentip,jdbcType=VARCHAR},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      PostId = #{postid,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where " CommentId" = #{commentid,jdbcType=VARCHAR}
   </update>
 </mapper>

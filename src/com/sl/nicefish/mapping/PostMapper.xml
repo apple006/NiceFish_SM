@@ -2,29 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sl.nicefish.dao.PostMapper" >
   <resultMap id="BaseResultMap" type="com.sl.nicefish.pojo.Post" >
-    <id column="POST_ID" property="postId" jdbcType="VARCHAR" />
-    <result column="POST_TITLE" property="postTitle" jdbcType="VARCHAR" />
-    <result column="POST_TIME" property="postTime" jdbcType="TIMESTAMP" />
-    <result column="POST_TYPE" property="postType" jdbcType="INTEGER" />
-    <result column="LAST_MODIFY_TIME" property="lastModifyTime" jdbcType="TIMESTAMP" />
-    <result column="READ_TIMES" property="readTimes" jdbcType="INTEGER" />
-    <result column="LIKED_TIMES" property="likedTimes" jdbcType="INTEGER" />
-    <result column="COLLECT_TIMES" property="collectTimes" jdbcType="INTEGER" />
-    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
-    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
-    <result column="ENABLE_COMMENT" property="enableComment" jdbcType="INTEGER" />
-    <result column="STATUS" property="status" jdbcType="INTEGER" />
-    <result column="NICK_NAME" property="nickName" jdbcType="VARCHAR" />
+    <id column="PostId" property="postid" jdbcType="VARCHAR" />
+    <result column="PostTitle" property="posttitle" jdbcType="VARCHAR" />
+    <result column="IsOriginal" property="isoriginal" jdbcType="INTEGER" />
+    <result column="ClassifyId" property="classifyid" jdbcType="VARCHAR" />
+    <result column="ReadTimes" property="readtimes" jdbcType="INTEGER" />
+    <result column="LikedTimes" property="likedtimes" jdbcType="INTEGER" />
+    <result column="CollectTimes" property="collecttimes" jdbcType="INTEGER" />
+    <result column="UserId" property="userid" jdbcType="VARCHAR" />
+    <result column="UserName" property="username" jdbcType="VARCHAR" />
+    <result column="EnableComment" property="enablecomment" jdbcType="INTEGER" />
+    <result column="Status" property="status" jdbcType="INTEGER" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="LastModifyTime" property="lastmodifytime" jdbcType="TIMESTAMP" />
+    <result column="ModifyUserId" property="modifyuserid" jdbcType="VARCHAR" />
+    <result column="NickName" property="nickname" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.sl.nicefish.pojo.Post" extends="BaseResultMap" >
-    <result column="POST_CONTENT" property="postContent" jdbcType="LONGVARCHAR" />
+    <result column="PostContent" property="postcontent" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    POST_ID, POST_TITLE, POST_TIME, POST_TYPE, LAST_MODIFY_TIME, READ_TIMES, LIKED_TIMES, 
-    COLLECT_TIMES, USER_ID, USER_NAME, ENABLE_COMMENT, STATUS, NICK_NAME
+    PostId, PostTitle, IsOriginal, ClassifyId, ReadTimes, LikedTimes, CollectTimes, UserId, 
+    UserName, EnableComment, Status, CreateTime, LastModifyTime, ModifyUserId, NickName
   </sql>
   <sql id="Blob_Column_List" >
-    POST_CONTENT
+    PostContent
   </sql>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
     select 
@@ -32,208 +34,215 @@
     ,
     <include refid="Blob_Column_List" />
     from post
-    where POST_ID = #{postId,jdbcType=VARCHAR}
-  </select>
-  <!-- 查询所有帖子 -->
-  <select id="getList" resultMap="BaseResultMap">
-  	select 
-  		<include refid="Base_Column_List"/>
-  	from post
+    where PostId = #{postid,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from post
-    where POST_ID = #{postId,jdbcType=VARCHAR}
+    where PostId = #{postid,jdbcType=VARCHAR}
   </delete>
-  
-  <!-- 批量删除 -->
-  <delete id="batchDeleteByPrimaryKeys" parameterType="java.lang.String">
-  	delete from post 
-  	where POST_ID in
-  	<foreach item="postIdItem" collection="array" open="(" separator="," close=")">
-  		#postIdItem
-  	</foreach>
-  </delete>
-  
   <insert id="insert" parameterType="com.sl.nicefish.pojo.Post" >
-    insert into post (POST_ID, POST_TITLE, POST_TIME, 
-      POST_TYPE, LAST_MODIFY_TIME, READ_TIMES, 
-      LIKED_TIMES, COLLECT_TIMES, USER_ID, 
-      USER_NAME, ENABLE_COMMENT, STATUS, 
-      NICK_NAME, POST_CONTENT)
-    values (#{postId,jdbcType=VARCHAR}, #{postTitle,jdbcType=VARCHAR}, #{postTime,jdbcType=TIMESTAMP}, 
-      #{postType,jdbcType=INTEGER}, #{lastModifyTime,jdbcType=TIMESTAMP}, #{readTimes,jdbcType=INTEGER}, 
-      #{likedTimes,jdbcType=INTEGER}, #{collectTimes,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, 
-      #{userName,jdbcType=VARCHAR}, #{enableComment,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
-      #{nickName,jdbcType=VARCHAR}, #{postContent,jdbcType=LONGVARCHAR})
+    insert into post (PostId, PostTitle, IsOriginal, 
+      ClassifyId, ReadTimes, LikedTimes, 
+      CollectTimes, UserId, UserName, 
+      EnableComment, Status, CreateTime, 
+      LastModifyTime, ModifyUserId, NickName, 
+      PostContent)
+    values (#{postid,jdbcType=VARCHAR}, #{posttitle,jdbcType=VARCHAR}, #{isoriginal,jdbcType=INTEGER}, 
+      #{classifyid,jdbcType=VARCHAR}, #{readtimes,jdbcType=INTEGER}, #{likedtimes,jdbcType=INTEGER}, 
+      #{collecttimes,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{enablecomment,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{lastmodifytime,jdbcType=TIMESTAMP}, #{modifyuserid,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{postcontent,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sl.nicefish.pojo.Post" >
     insert into post
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="postId != null" >
-        POST_ID,
+      <if test="postid != null" >
+        PostId,
       </if>
-      <if test="postTitle != null" >
-        POST_TITLE,
+      <if test="posttitle != null" >
+        PostTitle,
       </if>
-      <if test="postTime != null" >
-        POST_TIME,
+      <if test="isoriginal != null" >
+        IsOriginal,
       </if>
-      <if test="postType != null" >
-        POST_TYPE,
+      <if test="classifyid != null" >
+        ClassifyId,
       </if>
-      <if test="lastModifyTime != null" >
-        LAST_MODIFY_TIME,
+      <if test="readtimes != null" >
+        ReadTimes,
       </if>
-      <if test="readTimes != null" >
-        READ_TIMES,
+      <if test="likedtimes != null" >
+        LikedTimes,
       </if>
-      <if test="likedTimes != null" >
-        LIKED_TIMES,
+      <if test="collecttimes != null" >
+        CollectTimes,
       </if>
-      <if test="collectTimes != null" >
-        COLLECT_TIMES,
+      <if test="userid != null" >
+        UserId,
       </if>
-      <if test="userId != null" >
-        USER_ID,
+      <if test="username != null" >
+        UserName,
       </if>
-      <if test="userName != null" >
-        USER_NAME,
-      </if>
-      <if test="enableComment != null" >
-        ENABLE_COMMENT,
+      <if test="enablecomment != null" >
+        EnableComment,
       </if>
       <if test="status != null" >
-        STATUS,
+        Status,
       </if>
-      <if test="nickName != null" >
-        NICK_NAME,
+      <if test="createtime != null" >
+        CreateTime,
       </if>
-      <if test="postContent != null" >
-        POST_CONTENT,
+      <if test="lastmodifytime != null" >
+        LastModifyTime,
+      </if>
+      <if test="modifyuserid != null" >
+        ModifyUserId,
+      </if>
+      <if test="nickname != null" >
+        NickName,
+      </if>
+      <if test="postcontent != null" >
+        PostContent,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="postId != null" >
-        #{postId,jdbcType=VARCHAR},
+      <if test="postid != null" >
+        #{postid,jdbcType=VARCHAR},
       </if>
-      <if test="postTitle != null" >
-        #{postTitle,jdbcType=VARCHAR},
+      <if test="posttitle != null" >
+        #{posttitle,jdbcType=VARCHAR},
       </if>
-      <if test="postTime != null" >
-        #{postTime,jdbcType=TIMESTAMP},
+      <if test="isoriginal != null" >
+        #{isoriginal,jdbcType=INTEGER},
       </if>
-      <if test="postType != null" >
-        #{postType,jdbcType=INTEGER},
+      <if test="classifyid != null" >
+        #{classifyid,jdbcType=VARCHAR},
       </if>
-      <if test="lastModifyTime != null" >
-        #{lastModifyTime,jdbcType=TIMESTAMP},
+      <if test="readtimes != null" >
+        #{readtimes,jdbcType=INTEGER},
       </if>
-      <if test="readTimes != null" >
-        #{readTimes,jdbcType=INTEGER},
+      <if test="likedtimes != null" >
+        #{likedtimes,jdbcType=INTEGER},
       </if>
-      <if test="likedTimes != null" >
-        #{likedTimes,jdbcType=INTEGER},
+      <if test="collecttimes != null" >
+        #{collecttimes,jdbcType=INTEGER},
       </if>
-      <if test="collectTimes != null" >
-        #{collectTimes,jdbcType=INTEGER},
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=VARCHAR},
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
       </if>
-      <if test="userName != null" >
-        #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="enableComment != null" >
-        #{enableComment,jdbcType=INTEGER},
+      <if test="enablecomment != null" >
+        #{enablecomment,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="nickName != null" >
-        #{nickName,jdbcType=VARCHAR},
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="postContent != null" >
-        #{postContent,jdbcType=LONGVARCHAR},
+      <if test="lastmodifytime != null" >
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyuserid != null" >
+        #{modifyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="postcontent != null" >
+        #{postcontent,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.sl.nicefish.pojo.Post" >
     update post
     <set >
-      <if test="postTitle != null" >
-        POST_TITLE = #{postTitle,jdbcType=VARCHAR},
+      <if test="posttitle != null" >
+        PostTitle = #{posttitle,jdbcType=VARCHAR},
       </if>
-      <if test="postTime != null" >
-        POST_TIME = #{postTime,jdbcType=TIMESTAMP},
+      <if test="isoriginal != null" >
+        IsOriginal = #{isoriginal,jdbcType=INTEGER},
       </if>
-      <if test="postType != null" >
-        POST_TYPE = #{postType,jdbcType=INTEGER},
+      <if test="classifyid != null" >
+        ClassifyId = #{classifyid,jdbcType=VARCHAR},
       </if>
-      <if test="lastModifyTime != null" >
-        LAST_MODIFY_TIME = #{lastModifyTime,jdbcType=TIMESTAMP},
+      <if test="readtimes != null" >
+        ReadTimes = #{readtimes,jdbcType=INTEGER},
       </if>
-      <if test="readTimes != null" >
-        READ_TIMES = #{readTimes,jdbcType=INTEGER},
+      <if test="likedtimes != null" >
+        LikedTimes = #{likedtimes,jdbcType=INTEGER},
       </if>
-      <if test="likedTimes != null" >
-        LIKED_TIMES = #{likedTimes,jdbcType=INTEGER},
+      <if test="collecttimes != null" >
+        CollectTimes = #{collecttimes,jdbcType=INTEGER},
       </if>
-      <if test="collectTimes != null" >
-        COLLECT_TIMES = #{collectTimes,jdbcType=INTEGER},
+      <if test="userid != null" >
+        UserId = #{userid,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null" >
-        USER_ID = #{userId,jdbcType=VARCHAR},
+      <if test="username != null" >
+        UserName = #{username,jdbcType=VARCHAR},
       </if>
-      <if test="userName != null" >
-        USER_NAME = #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="enableComment != null" >
-        ENABLE_COMMENT = #{enableComment,jdbcType=INTEGER},
+      <if test="enablecomment != null" >
+        EnableComment = #{enablecomment,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        STATUS = #{status,jdbcType=INTEGER},
+        Status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="nickName != null" >
-        NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="postContent != null" >
-        POST_CONTENT = #{postContent,jdbcType=LONGVARCHAR},
+      <if test="lastmodifytime != null" >
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyuserid != null" >
+        ModifyUserId = #{modifyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        NickName = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="postcontent != null" >
+        PostContent = #{postcontent,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where POST_ID = #{postId,jdbcType=VARCHAR}
+    where PostId = #{postid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sl.nicefish.pojo.Post" >
     update post
-    set POST_TITLE = #{postTitle,jdbcType=VARCHAR},
-      POST_TIME = #{postTime,jdbcType=TIMESTAMP},
-      POST_TYPE = #{postType,jdbcType=INTEGER},
-      LAST_MODIFY_TIME = #{lastModifyTime,jdbcType=TIMESTAMP},
-      READ_TIMES = #{readTimes,jdbcType=INTEGER},
-      LIKED_TIMES = #{likedTimes,jdbcType=INTEGER},
-      COLLECT_TIMES = #{collectTimes,jdbcType=INTEGER},
-      USER_ID = #{userId,jdbcType=VARCHAR},
-      USER_NAME = #{userName,jdbcType=VARCHAR},
-      ENABLE_COMMENT = #{enableComment,jdbcType=INTEGER},
-      STATUS = #{status,jdbcType=INTEGER},
-      NICK_NAME = #{nickName,jdbcType=VARCHAR},
-      POST_CONTENT = #{postContent,jdbcType=LONGVARCHAR}
-    where POST_ID = #{postId,jdbcType=VARCHAR}
+    set PostTitle = #{posttitle,jdbcType=VARCHAR},
+      IsOriginal = #{isoriginal,jdbcType=INTEGER},
+      ClassifyId = #{classifyid,jdbcType=VARCHAR},
+      ReadTimes = #{readtimes,jdbcType=INTEGER},
+      LikedTimes = #{likedtimes,jdbcType=INTEGER},
+      CollectTimes = #{collecttimes,jdbcType=INTEGER},
+      UserId = #{userid,jdbcType=VARCHAR},
+      UserName = #{username,jdbcType=VARCHAR},
+      EnableComment = #{enablecomment,jdbcType=INTEGER},
+      Status = #{status,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      ModifyUserId = #{modifyuserid,jdbcType=VARCHAR},
+      NickName = #{nickname,jdbcType=VARCHAR},
+      PostContent = #{postcontent,jdbcType=LONGVARCHAR}
+    where PostId = #{postid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sl.nicefish.pojo.Post" >
     update post
-    set POST_TITLE = #{postTitle,jdbcType=VARCHAR},
-      POST_TIME = #{postTime,jdbcType=TIMESTAMP},
-      POST_TYPE = #{postType,jdbcType=INTEGER},
-      LAST_MODIFY_TIME = #{lastModifyTime,jdbcType=TIMESTAMP},
-      READ_TIMES = #{readTimes,jdbcType=INTEGER},
-      LIKED_TIMES = #{likedTimes,jdbcType=INTEGER},
-      COLLECT_TIMES = #{collectTimes,jdbcType=INTEGER},
-      USER_ID = #{userId,jdbcType=VARCHAR},
-      USER_NAME = #{userName,jdbcType=VARCHAR},
-      ENABLE_COMMENT = #{enableComment,jdbcType=INTEGER},
-      STATUS = #{status,jdbcType=INTEGER},
-      NICK_NAME = #{nickName,jdbcType=VARCHAR}
-    where POST_ID = #{postId,jdbcType=VARCHAR}
+    set PostTitle = #{posttitle,jdbcType=VARCHAR},
+      IsOriginal = #{isoriginal,jdbcType=INTEGER},
+      ClassifyId = #{classifyid,jdbcType=VARCHAR},
+      ReadTimes = #{readtimes,jdbcType=INTEGER},
+      LikedTimes = #{likedtimes,jdbcType=INTEGER},
+      CollectTimes = #{collecttimes,jdbcType=INTEGER},
+      UserId = #{userid,jdbcType=VARCHAR},
+      UserName = #{username,jdbcType=VARCHAR},
+      EnableComment = #{enablecomment,jdbcType=INTEGER},
+      Status = #{status,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      ModifyUserId = #{modifyuserid,jdbcType=VARCHAR},
+      NickName = #{nickname,jdbcType=VARCHAR}
+    where PostId = #{postid,jdbcType=VARCHAR}
   </update>
-  	
 </mapper>

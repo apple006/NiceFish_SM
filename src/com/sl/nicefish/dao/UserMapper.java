@@ -8,35 +8,21 @@ import com.sl.nicefish.pojo.User;
 
 @Repository
 public interface UserMapper {
-    int deleteByPrimaryKey(String userId);
+    int deleteByPrimaryKey(String userid);
 
     int insert(User record);
 
     int insertSelective(User record);
 
-    User selectByPrimaryKey(String userId);
+    User selectByPrimaryKey(String userid);
 
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
     
-    /**
-     * 根据激活码查询用户
-     * @param code
-     * @return
-     */
-    User getByCode(String code);
+    //List<User> getList();
     
-    /**
-     * 查询所有用户
-     * @return
-     */
-    List<User> getList();
+   // User getByUserName(String userName);
     
-    /**
-     * 通过用户名查找
-     * @param userName
-     * @return
-     */
-    User getByUserName(String userName);
+   // User getByCode(String code);
 }

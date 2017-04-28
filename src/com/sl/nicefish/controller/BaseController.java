@@ -6,6 +6,12 @@ import java.util.Map;
 import org.apache.commons.lang.StringUtils;
 
 public class BaseController {
+	
+	protected String pageListResponse(){
+		Map<String, Object > map = new HashMap<String,Object>();
+		return null;
+	}
+	
 	protected Map<String, Object> ajaxSuccessResponse(){
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		result.put("success", true);

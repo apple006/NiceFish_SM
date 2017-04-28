@@ -3,98 +3,88 @@ package com.sl.nicefish.pojo;
 import java.util.Date;
 
 public class Comment {
-    private String commentId;
+    private String commentid;
 
-    private String pId;
+    private String userid;
 
-    private String userId;
+    private String username;
 
-    private String userName;
+    private String nickname;
 
-    private String nickName;
+    private String visitorname;
 
-    private String commentName;
+    private String commentip;
 
-    private String commentIp;
+    private Date createtime;
 
-    private Date commentTime;
-
-    private String postId;
+    private String postid;
 
     private Integer status;
 
     private String content;
 
-    public String getCommentId() {
-        return commentId;
+    public String getCommentid() {
+        return commentid;
     }
 
-    public void setCommentId(String commentId) {
-        this.commentId = commentId == null ? null : commentId.trim();
+    public void setCommentid(String commentid) {
+        this.commentid = commentid == null ? null : commentid.trim();
     }
 
-    public String getpId() {
-        return pId;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setpId(String pId) {
-        this.pId = pId == null ? null : pId.trim();
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
-    public String getUserName() {
-        return userName;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+    public void setNickname(String nickname) {
+        this.nickname = nickname == null ? null : nickname.trim();
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getVisitorname() {
+        return visitorname;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName == null ? null : nickName.trim();
+    public void setVisitorname(String visitorname) {
+        this.visitorname = visitorname == null ? null : visitorname.trim();
     }
 
-    public String getCommentName() {
-        return commentName;
+    public String getCommentip() {
+        return commentip;
     }
 
-    public void setCommentName(String commentName) {
-        this.commentName = commentName == null ? null : commentName.trim();
+    public void setCommentip(String commentip) {
+        this.commentip = commentip == null ? null : commentip.trim();
     }
 
-    public String getCommentIp() {
-        return commentIp;
+    public Date getCreatetime() {
+        return createtime;
     }
 
-    public void setCommentIp(String commentIp) {
-        this.commentIp = commentIp == null ? null : commentIp.trim();
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
     }
 
-    public Date getCommentTime() {
-        return commentTime;
+    public String getPostid() {
+        return postid;
     }
 
-    public void setCommentTime(Date commentTime) {
-        this.commentTime = commentTime;
-    }
-
-    public String getPostId() {
-        return postId;
-    }
-
-    public void setPostId(String postId) {
-        this.postId = postId == null ? null : postId.trim();
+    public void setPostid(String postid) {
+        this.postid = postid == null ? null : postid.trim();
     }
 
     public Integer getStatus() {

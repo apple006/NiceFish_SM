@@ -1,36 +1,36 @@
 package com.sl.nicefish.pojo;
 
 public class Role {
-    private String roleId;
+    private String roleid;
 
-    private String roleName;
+    private String rolename;
 
-    private String roleDesc;
+    private String roledesc;
 
     private Integer type;
 
-    public String getRoleId() {
-        return roleId;
+    public String getRoleid() {
+        return roleid;
     }
 
-    public void setRoleId(String roleId) {
-        this.roleId = roleId == null ? null : roleId.trim();
+    public void setRoleid(String roleid) {
+        this.roleid = roleid == null ? null : roleid.trim();
     }
 
-    public String getRoleName() {
-        return roleName;
+    public String getRolename() {
+        return rolename;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName == null ? null : roleName.trim();
+    public void setRolename(String rolename) {
+        this.rolename = rolename == null ? null : rolename.trim();
     }
 
-    public String getRoleDesc() {
-        return roleDesc;
+    public String getRoledesc() {
+        return roledesc;
     }
 
-    public void setRoleDesc(String roleDesc) {
-        this.roleDesc = roleDesc == null ? null : roleDesc.trim();
+    public void setRoledesc(String roledesc) {
+        this.roledesc = roledesc == null ? null : roledesc.trim();
     }
 
     public Integer getType() {

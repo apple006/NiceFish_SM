@@ -20,7 +20,8 @@ class PostServcieImpl implements IPostService {
 	@Override
 	public List<Post> getList() {
 		// TODO Auto-generated method stub
-		return postMapper.getList();
+		return null;
+//		return postMapper.getList();
 	}
 
 	@Override
@@ -50,7 +51,8 @@ class PostServcieImpl implements IPostService {
 	@Override
 	public int batchDelete(String[] ids) {
 		// TODO Auto-generated method stub
-		return postMapper.batchDeleteByPrimaryKeys(ids);
+		return 0;
+//		return postMapper.batchDeleteByPrimaryKeys(ids);
 	}
 
 }

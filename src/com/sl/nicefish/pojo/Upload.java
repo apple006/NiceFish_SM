@@ -3,113 +3,113 @@ package com.sl.nicefish.pojo;
 import java.util.Date;
 
 public class Upload {
-    private String upId;
+    private String upid;
 
-    private Date upTime;
+    private Date uptime;
 
-    private String fileName;
+    private Integer filetype;
 
-    private String fileType;
+    private String filepath;
 
-    private Integer fileWidth;
+    private String filename;
 
-    private Integer fileHeight;
+    private Integer imgwidth;
 
-    private Float fileSize;
+    private Integer imgheight;
 
-    private Integer displayOrder;
+    private String filedesc;
 
-    private String userId;
+    private String userid;
 
-    private Integer fileModule;
+    private Integer imgmodule;
 
-    private String fileDesc;
+    private String postid;
 
-    public String getUpId() {
-        return upId;
+    public String getUpid() {
+        return upid;
     }
 
-    public void setUpId(String upId) {
-        this.upId = upId == null ? null : upId.trim();
+    public void setUpid(String upid) {
+        this.upid = upid == null ? null : upid.trim();
     }
 
-    public Date getUpTime() {
-        return upTime;
+    public Date getUptime() {
+        return uptime;
     }
 
-    public void setUpTime(Date upTime) {
-        this.upTime = upTime;
+    public void setUptime(Date uptime) {
+        this.uptime = uptime;
     }
 
-    public String getFileName() {
-        return fileName;
+    public Integer getFiletype() {
+        return filetype;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName == null ? null : fileName.trim();
+    public void setFiletype(Integer filetype) {
+        this.filetype = filetype;
     }
 
-    public String getFileType() {
-        return fileType;
+    public String getFilepath() {
+        return filepath;
     }
 
-    public void setFileType(String fileType) {
-        this.fileType = fileType == null ? null : fileType.trim();
+    public void setFilepath(String filepath) {
+        this.filepath = filepath == null ? null : filepath.trim();
     }
 
-    public Integer getFileWidth() {
-        return fileWidth;
+    public String getFilename() {
+        return filename;
     }
 
-    public void setFileWidth(Integer fileWidth) {
-        this.fileWidth = fileWidth;
+    public void setFilename(String filename) {
+        this.filename = filename == null ? null : filename.trim();
     }
 
-    public Integer getFileHeight() {
-        return fileHeight;
+    public Integer getImgwidth() {
+        return imgwidth;
     }
 
-    public void setFileHeight(Integer fileHeight) {
-        this.fileHeight = fileHeight;
+    public void setImgwidth(Integer imgwidth) {
+        this.imgwidth = imgwidth;
     }
 
-    public Float getFileSize() {
-        return fileSize;
+    public Integer getImgheight() {
+        return imgheight;
     }
 
-    public void setFileSize(Float fileSize) {
-        this.fileSize = fileSize;
+    public void setImgheight(Integer imgheight) {
+        this.imgheight = imgheight;
     }
 
-    public Integer getDisplayOrder() {
-        return displayOrder;
+    public String getFiledesc() {
+        return filedesc;
     }
 
-    public void setDisplayOrder(Integer displayOrder) {
-        this.displayOrder = displayOrder;
+    public void setFiledesc(String filedesc) {
+        this.filedesc = filedesc == null ? null : filedesc.trim();
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
     }
 
-    public Integer getFileModule() {
-        return fileModule;
+    public Integer getImgmodule() {
+        return imgmodule;
     }
 
-    public void setFileModule(Integer fileModule) {
-        this.fileModule = fileModule;
+    public void setImgmodule(Integer imgmodule) {
+        this.imgmodule = imgmodule;
     }
 
-    public String getFileDesc() {
-        return fileDesc;
+    public String getPostid() {
+        return postid;
     }
 
-    public void setFileDesc(String fileDesc) {
-        this.fileDesc = fileDesc == null ? null : fileDesc.trim();
+    public void setPostid(String postid) {
+        this.postid = postid == null ? null : postid.trim();
     }
 }

@@ -1,6 +1,7 @@
 package com.sl.nicefish.test;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -35,8 +36,15 @@ public class UserTest {
 		u.setNickName("xiaozhang");
 		u.setPassword("123456");
 		u.setNickName("张翼德");
-		u.setRealName("张飞");
-		u.setCellPhone("110120");
+		u.setUserRealName("张飞");
+		u.setCellPhone("13530155336");
+		u.setCode("0808");
+		u.setQq("892295834");
+		u.setRegistertime(new Date());
+		u.setStatus(1);//默认应该为0：未激活 1：激活，2：禁用
+		u.setType(3);//普通用户
+		u.setEname("Jack");
+		
 		System.out.println(userService.insert(u));
 	}
 	

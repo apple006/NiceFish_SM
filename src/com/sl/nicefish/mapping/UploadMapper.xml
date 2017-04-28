@@ -2,163 +2,163 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sl.nicefish.dao.UploadMapper" >
   <resultMap id="BaseResultMap" type="com.sl.nicefish.pojo.Upload" >
-    <id column="UP_ID" property="upId" jdbcType="VARCHAR" />
-    <result column="UP_TIME" property="upTime" jdbcType="TIMESTAMP" />
-    <result column="FILE_NAME" property="fileName" jdbcType="VARCHAR" />
-    <result column="FILE_TYPE" property="fileType" jdbcType="VARCHAR" />
-    <result column="FILE_WIDTH" property="fileWidth" jdbcType="INTEGER" />
-    <result column="FILE_HEIGHT" property="fileHeight" jdbcType="INTEGER" />
-    <result column="FILE_SIZE" property="fileSize" jdbcType="REAL" />
-    <result column="DISPLAY_ORDER" property="displayOrder" jdbcType="INTEGER" />
-    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
-    <result column="FILE_MODULE" property="fileModule" jdbcType="INTEGER" />
-    <result column="FILE_DESC" property="fileDesc" jdbcType="VARCHAR" />
+    <id column="UpId" property="upid" jdbcType="VARCHAR" />
+    <result column="UpTime" property="uptime" jdbcType="TIMESTAMP" />
+    <result column="FileType" property="filetype" jdbcType="INTEGER" />
+    <result column="FilePath" property="filepath" jdbcType="VARCHAR" />
+    <result column="FileName" property="filename" jdbcType="VARCHAR" />
+    <result column="ImgWidth" property="imgwidth" jdbcType="INTEGER" />
+    <result column="ImgHeight" property="imgheight" jdbcType="INTEGER" />
+    <result column="FileDesc" property="filedesc" jdbcType="VARCHAR" />
+    <result column="UserId" property="userid" jdbcType="VARCHAR" />
+    <result column="ImgModule" property="imgmodule" jdbcType="INTEGER" />
+    <result column="PostId" property="postid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    UP_ID, UP_TIME, FILE_NAME, FILE_TYPE, FILE_WIDTH, FILE_HEIGHT, FILE_SIZE, DISPLAY_ORDER, 
-    USER_ID, FILE_MODULE, FILE_DESC
+    UpId, UpTime, FileType, FilePath, FileName, ImgWidth, ImgHeight, FileDesc, UserId, 
+    ImgModule, PostId
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from upload
-    where UP_ID = #{upId,jdbcType=VARCHAR}
+    where UpId = #{upid,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from upload
-    where UP_ID = #{upId,jdbcType=VARCHAR}
+    where UpId = #{upid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.sl.nicefish.pojo.Upload" >
-    insert into upload (UP_ID, UP_TIME, FILE_NAME, 
-      FILE_TYPE, FILE_WIDTH, FILE_HEIGHT, 
-      FILE_SIZE, DISPLAY_ORDER, USER_ID, 
-      FILE_MODULE, FILE_DESC)
-    values (#{upId,jdbcType=VARCHAR}, #{upTime,jdbcType=TIMESTAMP}, #{fileName,jdbcType=VARCHAR}, 
-      #{fileType,jdbcType=VARCHAR}, #{fileWidth,jdbcType=INTEGER}, #{fileHeight,jdbcType=INTEGER}, 
-      #{fileSize,jdbcType=REAL}, #{displayOrder,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, 
-      #{fileModule,jdbcType=INTEGER}, #{fileDesc,jdbcType=VARCHAR})
+    insert into upload (UpId, UpTime, FileType, 
+      FilePath, FileName, ImgWidth, 
+      ImgHeight, FileDesc, UserId, 
+      ImgModule, PostId)
+    values (#{upid,jdbcType=VARCHAR}, #{uptime,jdbcType=TIMESTAMP}, #{filetype,jdbcType=INTEGER}, 
+      #{filepath,jdbcType=VARCHAR}, #{filename,jdbcType=VARCHAR}, #{imgwidth,jdbcType=INTEGER}, 
+      #{imgheight,jdbcType=INTEGER}, #{filedesc,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{imgmodule,jdbcType=INTEGER}, #{postid,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sl.nicefish.pojo.Upload" >
     insert into upload
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="upId != null" >
-        UP_ID,
+      <if test="upid != null" >
+        UpId,
       </if>
-      <if test="upTime != null" >
-        UP_TIME,
+      <if test="uptime != null" >
+        UpTime,
       </if>
-      <if test="fileName != null" >
-        FILE_NAME,
+      <if test="filetype != null" >
+        FileType,
       </if>
-      <if test="fileType != null" >
-        FILE_TYPE,
+      <if test="filepath != null" >
+        FilePath,
       </if>
-      <if test="fileWidth != null" >
-        FILE_WIDTH,
+      <if test="filename != null" >
+        FileName,
       </if>
-      <if test="fileHeight != null" >
-        FILE_HEIGHT,
+      <if test="imgwidth != null" >
+        ImgWidth,
       </if>
-      <if test="fileSize != null" >
-        FILE_SIZE,
+      <if test="imgheight != null" >
+        ImgHeight,
       </if>
-      <if test="displayOrder != null" >
-        DISPLAY_ORDER,
+      <if test="filedesc != null" >
+        FileDesc,
       </if>
-      <if test="userId != null" >
-        USER_ID,
+      <if test="userid != null" >
+        UserId,
       </if>
-      <if test="fileModule != null" >
-        FILE_MODULE,
+      <if test="imgmodule != null" >
+        ImgModule,
       </if>
-      <if test="fileDesc != null" >
-        FILE_DESC,
+      <if test="postid != null" >
+        PostId,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="upId != null" >
-        #{upId,jdbcType=VARCHAR},
+      <if test="upid != null" >
+        #{upid,jdbcType=VARCHAR},
       </if>
-      <if test="upTime != null" >
-        #{upTime,jdbcType=TIMESTAMP},
+      <if test="uptime != null" >
+        #{uptime,jdbcType=TIMESTAMP},
       </if>
-      <if test="fileName != null" >
-        #{fileName,jdbcType=VARCHAR},
+      <if test="filetype != null" >
+        #{filetype,jdbcType=INTEGER},
       </if>
-      <if test="fileType != null" >
-        #{fileType,jdbcType=VARCHAR},
+      <if test="filepath != null" >
+        #{filepath,jdbcType=VARCHAR},
       </if>
-      <if test="fileWidth != null" >
-        #{fileWidth,jdbcType=INTEGER},
+      <if test="filename != null" >
+        #{filename,jdbcType=VARCHAR},
       </if>
-      <if test="fileHeight != null" >
-        #{fileHeight,jdbcType=INTEGER},
+      <if test="imgwidth != null" >
+        #{imgwidth,jdbcType=INTEGER},
       </if>
-      <if test="fileSize != null" >
-        #{fileSize,jdbcType=REAL},
+      <if test="imgheight != null" >
+        #{imgheight,jdbcType=INTEGER},
       </if>
-      <if test="displayOrder != null" >
-        #{displayOrder,jdbcType=INTEGER},
+      <if test="filedesc != null" >
+        #{filedesc,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=VARCHAR},
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
       </if>
-      <if test="fileModule != null" >
-        #{fileModule,jdbcType=INTEGER},
+      <if test="imgmodule != null" >
+        #{imgmodule,jdbcType=INTEGER},
       </if>
-      <if test="fileDesc != null" >
-        #{fileDesc,jdbcType=VARCHAR},
+      <if test="postid != null" >
+        #{postid,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.sl.nicefish.pojo.Upload" >
     update upload
     <set >
-      <if test="upTime != null" >
-        UP_TIME = #{upTime,jdbcType=TIMESTAMP},
+      <if test="uptime != null" >
+        UpTime = #{uptime,jdbcType=TIMESTAMP},
       </if>
-      <if test="fileName != null" >
-        FILE_NAME = #{fileName,jdbcType=VARCHAR},
+      <if test="filetype != null" >
+        FileType = #{filetype,jdbcType=INTEGER},
       </if>
-      <if test="fileType != null" >
-        FILE_TYPE = #{fileType,jdbcType=VARCHAR},
+      <if test="filepath != null" >
+        FilePath = #{filepath,jdbcType=VARCHAR},
       </if>
-      <if test="fileWidth != null" >
-        FILE_WIDTH = #{fileWidth,jdbcType=INTEGER},
+      <if test="filename != null" >
+        FileName = #{filename,jdbcType=VARCHAR},
       </if>
-      <if test="fileHeight != null" >
-        FILE_HEIGHT = #{fileHeight,jdbcType=INTEGER},
+      <if test="imgwidth != null" >
+        ImgWidth = #{imgwidth,jdbcType=INTEGER},
       </if>
-      <if test="fileSize != null" >
-        FILE_SIZE = #{fileSize,jdbcType=REAL},
+      <if test="imgheight != null" >
+        ImgHeight = #{imgheight,jdbcType=INTEGER},
       </if>
-      <if test="displayOrder != null" >
-        DISPLAY_ORDER = #{displayOrder,jdbcType=INTEGER},
+      <if test="filedesc != null" >
+        FileDesc = #{filedesc,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null" >
-        USER_ID = #{userId,jdbcType=VARCHAR},
+      <if test="userid != null" >
+        UserId = #{userid,jdbcType=VARCHAR},
       </if>
-      <if test="fileModule != null" >
-        FILE_MODULE = #{fileModule,jdbcType=INTEGER},
+      <if test="imgmodule != null" >
+        ImgModule = #{imgmodule,jdbcType=INTEGER},
       </if>
-      <if test="fileDesc != null" >
-        FILE_DESC = #{fileDesc,jdbcType=VARCHAR},
+      <if test="postid != null" >
+        PostId = #{postid,jdbcType=VARCHAR},
       </if>
     </set>
-    where UP_ID = #{upId,jdbcType=VARCHAR}
+    where UpId = #{upid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sl.nicefish.pojo.Upload" >
     update upload
-    set UP_TIME = #{upTime,jdbcType=TIMESTAMP},
-      FILE_NAME = #{fileName,jdbcType=VARCHAR},
-      FILE_TYPE = #{fileType,jdbcType=VARCHAR},
-      FILE_WIDTH = #{fileWidth,jdbcType=INTEGER},
-      FILE_HEIGHT = #{fileHeight,jdbcType=INTEGER},
-      FILE_SIZE = #{fileSize,jdbcType=REAL},
-      DISPLAY_ORDER = #{displayOrder,jdbcType=INTEGER},
-      USER_ID = #{userId,jdbcType=VARCHAR},
-      FILE_MODULE = #{fileModule,jdbcType=INTEGER},
-      FILE_DESC = #{fileDesc,jdbcType=VARCHAR}
-    where UP_ID = #{upId,jdbcType=VARCHAR}
+    set UpTime = #{uptime,jdbcType=TIMESTAMP},
+      FileType = #{filetype,jdbcType=INTEGER},
+      FilePath = #{filepath,jdbcType=VARCHAR},
+      FileName = #{filename,jdbcType=VARCHAR},
+      ImgWidth = #{imgwidth,jdbcType=INTEGER},
+      ImgHeight = #{imgheight,jdbcType=INTEGER},
+      FileDesc = #{filedesc,jdbcType=VARCHAR},
+      UserId = #{userid,jdbcType=VARCHAR},
+      ImgModule = #{imgmodule,jdbcType=INTEGER},
+      PostId = #{postid,jdbcType=VARCHAR}
+    where UpId = #{upid,jdbcType=VARCHAR}
   </update>
 </mapper>

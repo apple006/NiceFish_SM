@@ -2,70 +2,70 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sl.nicefish.dao.RolePermissionMapper" >
   <resultMap id="BaseResultMap" type="com.sl.nicefish.pojo.RolePermission" >
-    <id column="ID" property="id" jdbcType="VARCHAR" />
-    <result column="PERMISSION_ID" property="permissionId" jdbcType="VARCHAR" />
-    <result column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
+    <id column="Id" property="id" jdbcType="VARCHAR" />
+    <result column="RoleId" property="roleid" jdbcType="VARCHAR" />
+    <result column="PermissionId" property="permissionid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, PERMISSION_ID, ROLE_ID
+    Id, RoleId, PermissionId
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from role_permission
-    where ID = #{id,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from role_permission
-    where ID = #{id,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.sl.nicefish.pojo.RolePermission" >
-    insert into role_permission (ID, PERMISSION_ID, ROLE_ID
+    insert into role_permission (Id, RoleId, PermissionId
       )
-    values (#{id,jdbcType=VARCHAR}, #{permissionId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}
+    values (#{id,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR}, #{permissionid,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.sl.nicefish.pojo.RolePermission" >
     insert into role_permission
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        ID,
+        Id,
       </if>
-      <if test="permissionId != null" >
-        PERMISSION_ID,
+      <if test="roleid != null" >
+        RoleId,
       </if>
-      <if test="roleId != null" >
-        ROLE_ID,
+      <if test="permissionid != null" >
+        PermissionId,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="permissionId != null" >
-        #{permissionId,jdbcType=VARCHAR},
+      <if test="roleid != null" >
+        #{roleid,jdbcType=VARCHAR},
       </if>
-      <if test="roleId != null" >
-        #{roleId,jdbcType=VARCHAR},
+      <if test="permissionid != null" >
+        #{permissionid,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.sl.nicefish.pojo.RolePermission" >
     update role_permission
     <set >
-      <if test="permissionId != null" >
-        PERMISSION_ID = #{permissionId,jdbcType=VARCHAR},
+      <if test="roleid != null" >
+        RoleId = #{roleid,jdbcType=VARCHAR},
       </if>
-      <if test="roleId != null" >
-        ROLE_ID = #{roleId,jdbcType=VARCHAR},
+      <if test="permissionid != null" >
+        PermissionId = #{permissionid,jdbcType=VARCHAR},
       </if>
     </set>
-    where ID = #{id,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sl.nicefish.pojo.RolePermission" >
     update role_permission
-    set PERMISSION_ID = #{permissionId,jdbcType=VARCHAR},
-      ROLE_ID = #{roleId,jdbcType=VARCHAR}
-    where ID = #{id,jdbcType=VARCHAR}
+    set RoleId = #{roleid,jdbcType=VARCHAR},
+      PermissionId = #{permissionid,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

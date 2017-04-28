@@ -1,0 +1,21 @@
+server {
+		listen 9000;
+		server_name www.nicefish.com;
+		#location / {
+		#	proxy_pass http://localhost:5000/; # 把根路径下的请求转发给前端工具链（如gulp）打开的开发服务器，如果是产品环境，则使用root等指令配置为静态文件服务器
+		#}
+		location /api/ {
+			proxy_pass http://www.nicefish.com:8081/; # 吧 /api 路径下的请求转发给真正的后端服务器
+			#proxy_set_header Host $http_host;  # 把host头传过去，后端服务程序将收到your.domain.name，否则收到的是localhost:8080
+			#proxy_cookie_path /api /service;   # 把cookie中的path部分从/api替换成/service
+			#proxy_cookie_domain localhost:8080 your.domain.name; # 把cookie的path部分从localhost:8080替换成your.domain.name
+		}
+		location /upload/ {
+			proxy_pass http://www.nicefish.com:8081/upload/;
+		}
+		location / {
+			proxy_pass http://www.nicefish.com:4200/;
+		}
+		
+		
+}

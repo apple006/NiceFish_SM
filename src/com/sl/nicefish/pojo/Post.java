@@ -3,120 +3,124 @@ package com.sl.nicefish.pojo;
 import java.util.Date;
 
 public class Post {
-    private String postId;
+    private String postid;
 
-    private String postTitle;
+    private String posttitle;
 
-    private Date postTime;
+    private Integer isoriginal;
 
-    private Integer postType;
+    private String classifyid;
 
-    private Date lastModifyTime;
+    private Integer readtimes;
 
-    private Integer readTimes;
+    private Integer likedtimes;
 
-    private Integer likedTimes;
+    private Integer collecttimes;
 
-    private Integer collectTimes;
+    private String userid;
 
-    private String userId;
+    private String username;
+    
+    private String nickname;
 
-    private String userName;
-
-    private Integer enableComment;
+	private Integer enablecomment;
 
     private Integer status;
 
-    private String nickName;
+    private Date createtime;
 
-    private String postContent;
+    private Date lastmodifytime;
+
+    private String modifyuserid;
+
+    private String postcontent;
 
     public String getPostId() {
-        return postId;
+        return postid;
     }
 
-    public void setPostId(String postId) {
-        this.postId = postId == null ? null : postId.trim();
+    public void setPostId(String postid) {
+        this.postid = postid == null ? null : postid.trim();
     }
 
     public String getPostTitle() {
-        return postTitle;
+        return posttitle;
     }
 
-    public void setPostTitle(String postTitle) {
-        this.postTitle = postTitle == null ? null : postTitle.trim();
+    public void setPostTitle(String posttitle) {
+        this.posttitle = posttitle == null ? null : posttitle.trim();
     }
 
-    public Date getPostTime() {
-        return postTime;
+    public Integer getIsOriginal() {
+        return isoriginal;
     }
 
-    public void setPostTime(Date postTime) {
-        this.postTime = postTime;
+    public void setIsOriginal(Integer isoriginal) {
+        this.isoriginal = isoriginal;
     }
 
-    public Integer getPostType() {
-        return postType;
+    public String getClassifyId() {
+        return classifyid;
     }
 
-    public void setPostType(Integer postType) {
-        this.postType = postType;
-    }
-
-    public Date getLastModifyTime() {
-        return lastModifyTime;
-    }
-
-    public void setLastModifyTime(Date lastModifyTime) {
-        this.lastModifyTime = lastModifyTime;
+    public void setClassifyId(String classifyid) {
+        this.classifyid = classifyid == null ? null : classifyid.trim();
     }
 
     public Integer getReadTimes() {
-        return readTimes;
+        return readtimes;
     }
 
-    public void setReadTimes(Integer readTimes) {
-        this.readTimes = readTimes;
+    public void setReadTimes(Integer readtimes) {
+        this.readtimes = readtimes;
     }
 
     public Integer getLikedTimes() {
-        return likedTimes;
+        return likedtimes;
     }
 
-    public void setLikedTimes(Integer likedTimes) {
-        this.likedTimes = likedTimes;
+    public void setLikedTimes(Integer likedtimes) {
+        this.likedtimes = likedtimes;
     }
 
     public Integer getCollectTimes() {
-        return collectTimes;
+        return collecttimes;
     }
 
-    public void setCollectTimes(Integer collectTimes) {
-        this.collectTimes = collectTimes;
+    public void setCollectTimes(Integer collecttimes) {
+        this.collecttimes = collecttimes;
     }
 
     public String getUserId() {
-        return userId;
+        return userid;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setUserId(String userid) {
+        this.userid = userid == null ? null : userid.trim();
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+    public void setUserName(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
+    public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickName) {
+		this.nickname = nickName;
+	}
+    
     public Integer getEnableComment() {
-        return enableComment;
+        return enablecomment;
     }
 
-    public void setEnableComment(Integer enableComment) {
-        this.enableComment = enableComment;
+    public void setEnableComment(Integer enablecomment) {
+        this.enablecomment = enablecomment;
     }
 
     public Integer getStatus() {
@@ -127,19 +131,35 @@ public class Post {
         this.status = status;
     }
 
-    public String getNickName() {
-        return nickName;
+    public Date getCreateTime() {
+        return createtime;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName == null ? null : nickName.trim();
+    public void setCreateTime(Date createtime) {
+        this.createtime = createtime;
+    }
+
+    public Date getLastModifyTime() {
+        return lastmodifytime;
+    }
+
+    public void setLastModifyTime(Date lastmodifytime) {
+        this.lastmodifytime = lastmodifytime;
+    }
+
+    public String getModifyUserid() {
+        return modifyuserid;
+    }
+
+    public void setModifyUserid(String modifyuserid) {
+        this.modifyuserid = modifyuserid == null ? null : modifyuserid.trim();
     }
 
     public String getPostContent() {
-        return postContent;
+        return postcontent;
     }
 
-    public void setPostContent(String postContent) {
-        this.postContent = postContent == null ? null : postContent.trim();
+    public void setPostContent(String postcontent) {
+        this.postcontent = postcontent == null ? null : postcontent.trim();
     }
 }

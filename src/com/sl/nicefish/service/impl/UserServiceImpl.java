@@ -27,12 +27,14 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public User getUserByCode(String code) {
-		return this.userMapper.getByCode(code);
+		return null;
+		//return this.userMapper.getByCode(code);
 	}
 
 	@Override
 	public List<User> getList() {
-		return this.userMapper.getList();
+		return null;
+		//return this.userMapper.getList();
 	}
 
 	@Override
@@ -47,7 +49,8 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public User getUserByUserName(String userName) {
-		return this.userMapper.getByUserName(userName);
+		return null;
+		//return this.userMapper.getByUserName(userName);
 	}
 
 }

@@ -2,70 +2,70 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sl.nicefish.dao.PermissionMapper" >
   <resultMap id="BaseResultMap" type="com.sl.nicefish.pojo.Permission" >
-    <id column="PERMISSION_ID" property="permissionId" jdbcType="VARCHAR" />
-    <result column="PERMISSION_CODE" property="permissionCode" jdbcType="VARCHAR" />
-    <result column="PERMISSION_DESC" property="permissionDesc" jdbcType="VARCHAR" />
+    <id column="PermissionId" property="permissionid" jdbcType="VARCHAR" />
+    <result column="PermissionCode" property="permissioncode" jdbcType="VARCHAR" />
+    <result column="PermissionDesc" property="permissiondesc" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    PERMISSION_ID, PERMISSION_CODE, PERMISSION_DESC
+    PermissionId, PermissionCode, PermissionDesc
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from permission
-    where PERMISSION_ID = #{permissionId,jdbcType=VARCHAR}
+    where PermissionId = #{permissionid,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from permission
-    where PERMISSION_ID = #{permissionId,jdbcType=VARCHAR}
+    where PermissionId = #{permissionid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.sl.nicefish.pojo.Permission" >
-    insert into permission (PERMISSION_ID, PERMISSION_CODE, PERMISSION_DESC
+    insert into permission (PermissionId, PermissionCode, PermissionDesc
       )
-    values (#{permissionId,jdbcType=VARCHAR}, #{permissionCode,jdbcType=VARCHAR}, #{permissionDesc,jdbcType=VARCHAR}
+    values (#{permissionid,jdbcType=VARCHAR}, #{permissioncode,jdbcType=VARCHAR}, #{permissiondesc,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.sl.nicefish.pojo.Permission" >
     insert into permission
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="permissionId != null" >
-        PERMISSION_ID,
+      <if test="permissionid != null" >
+        PermissionId,
       </if>
-      <if test="permissionCode != null" >
-        PERMISSION_CODE,
+      <if test="permissioncode != null" >
+        PermissionCode,
       </if>
-      <if test="permissionDesc != null" >
-        PERMISSION_DESC,
+      <if test="permissiondesc != null" >
+        PermissionDesc,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="permissionId != null" >
-        #{permissionId,jdbcType=VARCHAR},
+      <if test="permissionid != null" >
+        #{permissionid,jdbcType=VARCHAR},
       </if>
-      <if test="permissionCode != null" >
-        #{permissionCode,jdbcType=VARCHAR},
+      <if test="permissioncode != null" >
+        #{permissioncode,jdbcType=VARCHAR},
       </if>
-      <if test="permissionDesc != null" >
-        #{permissionDesc,jdbcType=VARCHAR},
+      <if test="permissiondesc != null" >
+        #{permissiondesc,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.sl.nicefish.pojo.Permission" >
     update permission
     <set >
-      <if test="permissionCode != null" >
-        PERMISSION_CODE = #{permissionCode,jdbcType=VARCHAR},
+      <if test="permissioncode != null" >
+        PermissionCode = #{permissioncode,jdbcType=VARCHAR},
       </if>
-      <if test="permissionDesc != null" >
-        PERMISSION_DESC = #{permissionDesc,jdbcType=VARCHAR},
+      <if test="permissiondesc != null" >
+        PermissionDesc = #{permissiondesc,jdbcType=VARCHAR},
       </if>
     </set>
-    where PERMISSION_ID = #{permissionId,jdbcType=VARCHAR}
+    where PermissionId = #{permissionid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sl.nicefish.pojo.Permission" >
     update permission
-    set PERMISSION_CODE = #{permissionCode,jdbcType=VARCHAR},
-      PERMISSION_DESC = #{permissionDesc,jdbcType=VARCHAR}
-    where PERMISSION_ID = #{permissionId,jdbcType=VARCHAR}
+    set PermissionCode = #{permissioncode,jdbcType=VARCHAR},
+      PermissionDesc = #{permissiondesc,jdbcType=VARCHAR}
+    where PermissionId = #{permissionid,jdbcType=VARCHAR}
   </update>
 </mapper>
