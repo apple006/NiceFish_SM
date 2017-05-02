@@ -17,7 +17,13 @@
         <url-pattern>/images/*</url-pattern>
         <url-pattern>/fonts/*</url-pattern>
       	<url-pattern>/html/*</url-pattern> -->
+      	<url-pattern>*.gif</url-pattern>
+      	<url-pattern>*.jpg</url-pattern>  
+      	<url-pattern>*.png</url-pattern>  
+      	<url-pattern>*.jpeg</url-pattern>  
+      	<url-pattern>*.bmp</url-pattern>  
     </servlet-mapping>
+    
     <!-- 字符集拦截器 -->
     <filter>
 	    <description>字符集过滤器</description>

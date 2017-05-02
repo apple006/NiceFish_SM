@@ -2,7 +2,9 @@ package com.sl.nicefish.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,10 +24,8 @@ public class UploadController {
 	
 	@RequestMapping(value="image",method=RequestMethod.POST)
 	public void imageUpload(HttpServletRequest request, HttpServletResponse response){
-		System.out.println("sdfsdf");
-		String DirectoryName = "upload";
         try {
-            ImageUploadUtil.ckeditor(request, response, DirectoryName);
+            ImageUploadUtil.upload(request, response);
         } catch (IllegalStateException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -66,5 +66,25 @@ public class UploadController {
         System.out.println("方法三的运行时间："+String.valueOf(endTime-startTime)+"ms");
     }
 	
+	@RequestMapping("preView")
+	public String preView(HttpServletRequest request){
+		//获取上传文件的目录
+		String uploadFilePath = request.getServletContext().getRealPath("/upload");
+		//存储要下载的文件名
+				Map<String,String> filenameMap = new HashMap<String,String>();
+				File file = new File(uploadFilePath);
+				if(!file.exists()){
+					request.setAttribute("filenameMap", "");
+					System.out.println(filenameMap.toString());
+					System.out.println("下载文件为空");
+				}else{
+					//递归遍历filepath 目录下所有的文件和和目录，将文件的文件名存储到map中
+					ImageUploadUtil.listFile(new File(uploadFilePath),filenameMap);
+					//将Map集合发送到listfile.jsp页面进行显示
+					request.setAttribute("filenameMap", filenameMap);
+					System.out.println(filenameMap.toString());
+				}
+			return "listfile";
+	}
 }
 

@@ -51,5 +51,7 @@
      <property name="maxUploadSize" value="104857600" />
      <property name="maxInMemorySize" value="4096" />
      <property name="defaultEncoding" value="UTF-8"></property>
-</bean>
+	</bean>
+	<!-- 图片,css,js等静态资源配置 -->
+    <mvc:resources location="/assets/" mapping="/assets/**"/>
 </beans>
