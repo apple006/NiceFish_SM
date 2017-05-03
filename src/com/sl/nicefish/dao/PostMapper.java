@@ -22,6 +22,6 @@ public interface PostMapper {
 
     int updateByPrimaryKey(Post record);
     
-    //List<Post> getList();
+    List<Post> getList();
     //int batchDeleteByPrimaryKeys(String[] ids);
 }

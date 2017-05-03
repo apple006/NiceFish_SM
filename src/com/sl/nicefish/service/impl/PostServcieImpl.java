@@ -1,14 +1,15 @@
 package com.sl.nicefish.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.sl.nicefish.dao.PostMapper;
 import com.sl.nicefish.pojo.Post;
 import com.sl.nicefish.service.IPostService;
+import com.sl.nicefish.util.UUIDUtil;
 
 @Service("postService")
 class PostServcieImpl implements IPostService {
@@ -20,8 +21,7 @@ class PostServcieImpl implements IPostService {
 	@Override
 	public List<Post> getList() {
 		// TODO Auto-generated method stub
-		return null;
-//		return postMapper.getList();
+		return postMapper.getList();
 	}
 
 	@Override

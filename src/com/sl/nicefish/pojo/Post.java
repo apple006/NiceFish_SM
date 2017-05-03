@@ -162,4 +162,16 @@ public class Post {
     public void setPostContent(String postcontent) {
         this.postcontent = postcontent == null ? null : postcontent.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Post [postid=" + postid + ", posttitle=" + posttitle + ", isoriginal=" + isoriginal + ", classifyid="
+				+ classifyid + ", readtimes=" + readtimes + ", likedtimes=" + likedtimes + ", collecttimes="
+				+ collecttimes + ", userid=" + userid + ", username=" + username + ", nickname=" + nickname
+				+ ", enablecomment=" + enablecomment + ", status=" + status + ", createtime=" + createtime
+				+ ", lastmodifytime=" + lastmodifytime + ", modifyuserid=" + modifyuserid + ", postcontent="
+				+ postcontent + "]";
+	}
+    
+    
 }

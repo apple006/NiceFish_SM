@@ -52,7 +52,7 @@ public class UserController {
 //		String jsonMap = JSONObject.toJSONString(map);
 		
 //		System.out.println(objectMapper.writeValueAsString(map));
-		return ResultUtil.jsonStringResult(page, list);
+		return ResultUtil.jsonResultWithPage(page, list);
 	}
 	
 	/**

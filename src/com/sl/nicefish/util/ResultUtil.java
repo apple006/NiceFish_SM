@@ -60,7 +60,7 @@ public class ResultUtil {
 	 * @param list
 	 * @return
 	 */
-	public static String jsonStringResult(Page<?> page, List<?> list){
+	public static String jsonResultWithPage(Page<?> page, List<?> list){
 		Map<String,Object> map = mapResult(page, list);
 		return JSONObject.toJSONString(map);
 	}
@@ -70,7 +70,7 @@ public class ResultUtil {
 	 * @param obj
 	 * @return
 	 */
-	public static String jsonDetail(Object obj){
+	public static String jsonResultDetail(Object obj){
 		Map<String, Object> map = new HashMap<>();
 		if(obj !=null){
 			map.put("data", obj);
@@ -81,5 +81,23 @@ public class ResultUtil {
 		}
 		
 		return JSONObject.toJSONString(map);
+	}
+	
+	/**
+	 * 成功后的json数据
+	 * @param obj
+	 * @return
+	 */
+	public static String jsonResultSuccess(Object obj){
+		return null;
+	}
+	
+	/**
+	 * 返回失败后json的数据
+	 * @param obj
+	 * @return
+	 */
+	public static String jsonResultError(Object obj){
+		return null;
 	}
 }
