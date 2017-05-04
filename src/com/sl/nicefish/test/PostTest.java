@@ -53,7 +53,7 @@ public class PostTest {
 	
 	@Test
 	public void test1(){
-		System.out.println(JSONObject.toJSONString(postService.getList()));
+		System.out.println(postService.getList());
 	}
 	
 }

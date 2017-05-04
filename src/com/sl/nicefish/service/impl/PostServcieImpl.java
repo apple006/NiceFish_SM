@@ -1,6 +1,5 @@
 package com.sl.nicefish.service.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.sl.nicefish.dao.PostMapper;
 import com.sl.nicefish.pojo.Post;
 import com.sl.nicefish.service.IPostService;
-import com.sl.nicefish.util.UUIDUtil;
 
 @Service("postService")
 class PostServcieImpl implements IPostService {

@@ -15,6 +15,13 @@
     from classify
     where ClassifyId = #{classifyid,jdbcType=VARCHAR}
   </select>
+  
+  <select id="getList">
+  	select 
+    <include refid="Base_Column_List" />
+    from classify
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from classify
     where ClassifyId = #{classifyid,jdbcType=VARCHAR}

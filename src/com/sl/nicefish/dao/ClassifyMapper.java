@@ -1,17 +1,14 @@
 package com.sl.nicefish.dao;
 
+import java.util.List;
+
 import com.sl.nicefish.pojo.Classify;
 
-public interface ClassifyMapper {
-    int deleteByPrimaryKey(String classifyid);
-
-    int insert(Classify record);
-
-    int insertSelective(Classify record);
-
-    Classify selectByPrimaryKey(String classifyid);
-
-    int updateByPrimaryKeySelective(Classify record);
-
-    int updateByPrimaryKey(Classify record);
+public interface ClassifyMapper extends BaseMapper<Classify, String> {
+	
+	/**
+	 * 获取分类列表
+	 * @return
+	 */
+    List<Classify> getList();
 }

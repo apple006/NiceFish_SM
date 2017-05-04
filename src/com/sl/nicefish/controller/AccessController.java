@@ -22,29 +22,29 @@ public class AccessController extends BaseController{
 	@Autowired
 	private IUserService userService;
 	
-	@RequestMapping(value="/login", method=RequestMethod.POST)
+	/*@RequestMapping(value="/login", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> login(@RequestBody User user, HttpSession session){
 		
 		User userDB = userService.getUserById(user.getUpId());
 		
 		if(null == userDB){
-			return this.ajaxFailureResponse("用户名或者密码错误");
+			return this.failureResponse("用户名或者密码错误");
 		}
 		if(!userDB.getPassword().equals(user.getPassword())){
-			return this.ajaxFailureResponse("用户名或者密码错误");
+			return this.failureResponse("用户名或者密码错误");
 		}
 		session.setAttribute(ConstSessionName.UserInfo, userDB);
-		return this.ajaxSuccessResponse();
+		return this.successResponse();
 	}
 	
 	@RequestMapping(value="/register", method=RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> register(@RequestBody User user) throws Exception{
 		if(1==this.userService.insert(user)){
-			return this.ajaxSuccessResponse();
+			return this.successResponse();
 		}
-		return this.ajaxFailureResponse();
+		return this.failureResponse();
 	}
-	
+	*/
 }
