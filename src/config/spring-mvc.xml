@@ -9,8 +9,6 @@
   http://www.springframework.org/schema/context/spring-context-3.1.xsd  
   http://www.springframework.org/schema/mvc  
   http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
-	<!-- 静态资源文件，不会被Spring MVC拦截 -->
-    <mvc:resources location="/resources/" mapping="/resources/**"/>
 	<!-- 支持json格式 -->
 	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 		<property name="supportedMediaTypes">
@@ -45,13 +43,20 @@
   	<!-- SpringMVC注解驱动 --> 
 	<mvc:annotation-driven/>
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/view/" p:suffix=".jsp" />
+	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/view/" p:suffix=".jsp" /> -->
 	<!-- 多部分文件上传 -->
+	<!-- <bean  class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+        <property name="order" value="10"></property>  
+        <property name="prefix" value="/"></property>  
+        <property name="contentType" value="text/html"></property>  
+    </bean>  -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
      <property name="maxUploadSize" value="104857600" />
      <property name="maxInMemorySize" value="4096" />
      <property name="defaultEncoding" value="UTF-8"></property>
 	</bean>
 	<!-- 图片,css,js等静态资源配置 -->
-    <mvc:resources location="/assets/" mapping="/assets/**"/>
+     <mvc:resources location="/assets/" mapping="/assets/**"/> 
+     <mvc:resources location="/images/" mapping="/images/**"/> 
+     <mvc:view-controller path="/" view-name="redirect:/" />
 </beans>

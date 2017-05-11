@@ -18,6 +18,8 @@
 </head>
 <body>
 	<span><%=basePath %></span>
+	
+	
 	<div>
 		验证码:<input type="text" name="checkcode"/>
 		<img id="validateCodeImg" alt="验证码" src="<%=path%>/code">

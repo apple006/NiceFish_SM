@@ -11,7 +11,7 @@ import com.sl.nicefish.service.IClassifyService;
 
 
 @Controller
-@RequestMapping("classify")
+@RequestMapping("/classify")
 public class ClassifyController extends BaseController{
 	
 	@Autowired

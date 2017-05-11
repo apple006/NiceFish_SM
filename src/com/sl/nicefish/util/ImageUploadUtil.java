@@ -25,7 +25,7 @@ public class ImageUploadUtil {
 	public static final String GIF = "gif";
 	public static final String BMP = "bmp";
 	
-	public static final String UPLOAD_DIR="upload";//存放上传文件的目录名
+	public static final String UPLOAD_DIR="images";//存放上传文件的目录名
 	
 	private static List<String> types = new ArrayList<>();
 	static {
@@ -73,11 +73,13 @@ public class ImageUploadUtil {
 							continue;
 						}
 						// 获得上传路径的绝对路径地址(/upload)-->
+						System.out.println(request.getServletPath()); 
 						String realPath = request.getSession().getServletContext().getRealPath("/"+UPLOAD_DIR);
-						
+						System.out.println("realPath"+realPath);
+						System.out.println(request.getSession().getServletContext().getRealPath("/WEB-INF"));
 						String dateDir = DateUtil.format("yyyyMMddHH");
 						
-						String finalSavePath = realPath+"\\"+dateDir;
+						String finalSavePath = realPath+File.separator+dateDir;
 						
 						File fileDir = new File(finalSavePath);
 						if(!fileDir.exists()){
@@ -104,7 +106,8 @@ public class ImageUploadUtil {
 						System.out.println(finalSavePath+File.separator+fileName);
 						
 						String imageContextPath = request.getContextPath() + "/" + UPLOAD_DIR + "/" +dateDir+"/"+fileName;
-						System.out.println(imageContextPath);
+						//String imageContextPath = request.getContextPath() + UPLOAD_DIR + "/" +dateDir+"/"+fileName;
+						System.out.println("imageContextPath:"+imageContextPath);
 						response.setContentType("text/html;charset=UTF-8");
 				        response.setCharacterEncoding("utf-8");
 				        String callback = request.getParameter("CKEditorFuncNum");
@@ -141,7 +144,8 @@ public class ImageUploadUtil {
         // 结合ckeditor功能
         // imageContextPath为图片在服务器地址，如upload/123.jpg,非绝对路径
         System.out.println(UPLOAD_DIR);
-       imageContextPath =  request.getContextPath()+imageContextPath.substring(imageContextPath.indexOf(UPLOAD_DIR),imageContextPath.length());
+     imageContextPath =  request.getContextPath()+imageContextPath.substring(imageContextPath.indexOf(UPLOAD_DIR),imageContextPath.length());
+        //imageContextPath = imageContextPath.substring(imageContextPath.indexOf(UPLOAD_DIR),imageContextPath.length());
        /// System.out.println(filePath);
        // String imageContextPath = request.getContextPath() + File.separator + UPLOAD_DIR + File.separator + filePath;
         System.out.println("imageContextPath:"+imageContextPath);
