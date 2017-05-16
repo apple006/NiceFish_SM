@@ -13,6 +13,7 @@
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/assets/*</url-pattern>
+        <url-pattern>/umeditor1.2.3-utf8-jsp/*</url-pattern>
       	<url-pattern>*.gif</url-pattern>
       	<url-pattern>*.jpg</url-pattern>  
       	<url-pattern>*.png</url-pattern>  
