@@ -6,6 +6,7 @@ public class Classify {
     private String classifyname;
 
     private String classifydesc;
+    
 
     public String getClassifyid() {
         return classifyid;

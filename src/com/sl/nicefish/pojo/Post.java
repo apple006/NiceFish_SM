@@ -17,13 +17,13 @@ public class Post {
 
     private Integer collecttimes;
 
+    private Integer commenttimes;
+
     private String userid;
 
     private String username;
-    
-    private String nickname;
 
-	private Integer enablecomment;
+    private Integer enablecomment;
 
     private Integer status;
 
@@ -33,93 +33,99 @@ public class Post {
 
     private String modifyuserid;
 
+    private String nickname;
+
+    private String posturl;
+
+    private String isfamous;
+
     private String postcontent;
 
-    public String getPostId() {
+    public String getPostid() {
         return postid;
     }
 
-    public void setPostId(String postid) {
+    public void setPostid(String postid) {
         this.postid = postid == null ? null : postid.trim();
     }
 
-    public String getPostTitle() {
+    public String getPosttitle() {
         return posttitle;
     }
 
-    public void setPostTitle(String posttitle) {
+    public void setPosttitle(String posttitle) {
         this.posttitle = posttitle == null ? null : posttitle.trim();
     }
 
-    public Integer getIsOriginal() {
+    public Integer getIsoriginal() {
         return isoriginal;
     }
 
-    public void setIsOriginal(Integer isoriginal) {
+    public void setIsoriginal(Integer isoriginal) {
         this.isoriginal = isoriginal;
     }
 
-    public String getClassifyId() {
+    public String getClassifyid() {
         return classifyid;
     }
 
-    public void setClassifyId(String classifyid) {
+    public void setClassifyid(String classifyid) {
         this.classifyid = classifyid == null ? null : classifyid.trim();
     }
 
-    public Integer getReadTimes() {
+    public Integer getReadtimes() {
         return readtimes;
     }
 
-    public void setReadTimes(Integer readtimes) {
+    public void setReadtimes(Integer readtimes) {
         this.readtimes = readtimes;
     }
 
-    public Integer getLikedTimes() {
+    public Integer getLikedtimes() {
         return likedtimes;
     }
 
-    public void setLikedTimes(Integer likedtimes) {
+    public void setLikedtimes(Integer likedtimes) {
         this.likedtimes = likedtimes;
     }
 
-    public Integer getCollectTimes() {
+    public Integer getCollecttimes() {
         return collecttimes;
     }
 
-    public void setCollectTimes(Integer collecttimes) {
+    public void setCollecttimes(Integer collecttimes) {
         this.collecttimes = collecttimes;
     }
 
-    public String getUserId() {
+    public Integer getCommenttimes() {
+        return commenttimes;
+    }
+
+    public void setCommenttimes(Integer commenttimes) {
+        this.commenttimes = commenttimes;
+    }
+
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserId(String userid) {
+    public void setUserid(String userid) {
         this.userid = userid == null ? null : userid.trim();
     }
 
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUserName(String username) {
+    public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
     }
 
-    public String getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(String nickName) {
-		this.nickname = nickName;
-	}
-    
-    public Integer getEnableComment() {
+    public Integer getEnablecomment() {
         return enablecomment;
     }
 
-    public void setEnableComment(Integer enablecomment) {
+    public void setEnablecomment(Integer enablecomment) {
         this.enablecomment = enablecomment;
     }
 
@@ -131,35 +137,59 @@ public class Post {
         this.status = status;
     }
 
-    public Date getCreateTime() {
+    public Date getCreatetime() {
         return createtime;
     }
 
-    public void setCreateTime(Date createtime) {
+    public void setCreatetime(Date createtime) {
         this.createtime = createtime;
     }
 
-    public Date getLastModifyTime() {
+    public Date getLastmodifytime() {
         return lastmodifytime;
     }
 
-    public void setLastModifyTime(Date lastmodifytime) {
+    public void setLastmodifytime(Date lastmodifytime) {
         this.lastmodifytime = lastmodifytime;
     }
 
-    public String getModifyUserid() {
+    public String getModifyuserid() {
         return modifyuserid;
     }
 
-    public void setModifyUserid(String modifyuserid) {
+    public void setModifyuserid(String modifyuserid) {
         this.modifyuserid = modifyuserid == null ? null : modifyuserid.trim();
     }
 
-    public String getPostContent() {
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname == null ? null : nickname.trim();
+    }
+
+    public String getPosturl() {
+        return posturl;
+    }
+
+    public void setPosturl(String posturl) {
+        this.posturl = posturl == null ? null : posturl.trim();
+    }
+
+    public String getIsfamous() {
+        return isfamous;
+    }
+
+    public void setIsfamous(String isfamous) {
+        this.isfamous = isfamous == null ? null : isfamous.trim();
+    }
+
+    public String getPostcontent() {
         return postcontent;
     }
 
-    public void setPostContent(String postcontent) {
+    public void setPostcontent(String postcontent) {
         this.postcontent = postcontent == null ? null : postcontent.trim();
     }
 
@@ -167,10 +197,10 @@ public class Post {
 	public String toString() {
 		return "Post [postid=" + postid + ", posttitle=" + posttitle + ", isoriginal=" + isoriginal + ", classifyid="
 				+ classifyid + ", readtimes=" + readtimes + ", likedtimes=" + likedtimes + ", collecttimes="
-				+ collecttimes + ", userid=" + userid + ", username=" + username + ", nickname=" + nickname
+				+ collecttimes + ", commenttimes=" + commenttimes + ", userid=" + userid + ", username=" + username
 				+ ", enablecomment=" + enablecomment + ", status=" + status + ", createtime=" + createtime
-				+ ", lastmodifytime=" + lastmodifytime + ", modifyuserid=" + modifyuserid + ", postcontent="
-				+ postcontent + "]";
+				+ ", lastmodifytime=" + lastmodifytime + ", modifyuserid=" + modifyuserid + ", nickname=" + nickname
+				+ ", posturl=" + posturl + ", isfamous=" + isfamous + ", postcontent=" + postcontent + "]";
 	}
     
     

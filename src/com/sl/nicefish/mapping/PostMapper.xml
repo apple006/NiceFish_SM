@@ -9,6 +9,7 @@
     <result column="ReadTimes" property="readtimes" jdbcType="INTEGER" />
     <result column="LikedTimes" property="likedtimes" jdbcType="INTEGER" />
     <result column="CollectTimes" property="collecttimes" jdbcType="INTEGER" />
+    <result column="CommentTimes" property="commenttimes" jdbcType="INTEGER" />
     <result column="UserId" property="userid" jdbcType="VARCHAR" />
     <result column="UserName" property="username" jdbcType="VARCHAR" />
     <result column="EnableComment" property="enablecomment" jdbcType="INTEGER" />
@@ -17,13 +18,16 @@
     <result column="LastModifyTime" property="lastmodifytime" jdbcType="TIMESTAMP" />
     <result column="ModifyUserId" property="modifyuserid" jdbcType="VARCHAR" />
     <result column="NickName" property="nickname" jdbcType="VARCHAR" />
+    <result column="PostURL" property="posturl" jdbcType="VARCHAR" />
+    <result column="IsFamous" property="isfamous" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.sl.nicefish.pojo.Post" extends="BaseResultMap" >
     <result column="PostContent" property="postcontent" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    PostId, PostTitle, IsOriginal, ClassifyId, ReadTimes, LikedTimes, CollectTimes, UserId, 
-    UserName, EnableComment, Status, CreateTime, LastModifyTime, ModifyUserId, NickName
+    PostId, PostTitle, IsOriginal, ClassifyId, ReadTimes, LikedTimes, CollectTimes, CommentTimes, 
+    UserId, UserName, EnableComment, Status, CreateTime, LastModifyTime, ModifyUserId, 
+    NickName, PostURL, IsFamous
   </sql>
   <sql id="Blob_Column_List" >
     PostContent
@@ -36,13 +40,15 @@
     from post
     where PostId = #{postid,jdbcType=VARCHAR}
   </select>
-  <select id="getList" resultMap="ResultMapWithBLOBs">
+  
+    <select id="getList" resultMap="ResultMapWithBLOBs">
   	select 
   	<include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from post Order By CreateTime Desc
   </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from post
     where PostId = #{postid,jdbcType=VARCHAR}
@@ -50,15 +56,17 @@
   <insert id="insert" parameterType="com.sl.nicefish.pojo.Post" >
     insert into post (PostId, PostTitle, IsOriginal, 
       ClassifyId, ReadTimes, LikedTimes, 
-      CollectTimes, UserId, UserName, 
-      EnableComment, Status, CreateTime, 
-      LastModifyTime, ModifyUserId, NickName, 
+      CollectTimes, CommentTimes, UserId, 
+      UserName, EnableComment, Status, 
+      CreateTime, LastModifyTime, ModifyUserId, 
+      NickName, PostURL, IsFamous, 
       PostContent)
     values (#{postid,jdbcType=VARCHAR}, #{posttitle,jdbcType=VARCHAR}, #{isoriginal,jdbcType=INTEGER}, 
       #{classifyid,jdbcType=VARCHAR}, #{readtimes,jdbcType=INTEGER}, #{likedtimes,jdbcType=INTEGER}, 
-      #{collecttimes,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{enablecomment,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{lastmodifytime,jdbcType=TIMESTAMP}, #{modifyuserid,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{collecttimes,jdbcType=INTEGER}, #{commenttimes,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{enablecomment,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{lastmodifytime,jdbcType=TIMESTAMP}, #{modifyuserid,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{posturl,jdbcType=VARCHAR}, #{isfamous,jdbcType=VARCHAR}, 
       #{postcontent,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sl.nicefish.pojo.Post" >
@@ -85,6 +93,9 @@
       <if test="collecttimes != null" >
         CollectTimes,
       </if>
+      <if test="commenttimes != null" >
+        CommentTimes,
+      </if>
       <if test="userid != null" >
         UserId,
       </if>
@@ -108,6 +119,12 @@
       </if>
       <if test="nickname != null" >
         NickName,
+      </if>
+      <if test="posturl != null" >
+        PostURL,
+      </if>
+      <if test="isfamous != null" >
+        IsFamous,
       </if>
       <if test="postcontent != null" >
         PostContent,
@@ -135,6 +152,9 @@
       <if test="collecttimes != null" >
         #{collecttimes,jdbcType=INTEGER},
       </if>
+      <if test="commenttimes != null" >
+        #{commenttimes,jdbcType=INTEGER},
+      </if>
       <if test="userid != null" >
         #{userid,jdbcType=VARCHAR},
       </if>
@@ -158,6 +178,12 @@
       </if>
       <if test="nickname != null" >
         #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="posturl != null" >
+        #{posturl,jdbcType=VARCHAR},
+      </if>
+      <if test="isfamous != null" >
+        #{isfamous,jdbcType=VARCHAR},
       </if>
       <if test="postcontent != null" >
         #{postcontent,jdbcType=LONGVARCHAR},
@@ -185,6 +211,9 @@
       <if test="collecttimes != null" >
         CollectTimes = #{collecttimes,jdbcType=INTEGER},
       </if>
+      <if test="commenttimes != null" >
+        CommentTimes = #{commenttimes,jdbcType=INTEGER},
+      </if>
       <if test="userid != null" >
         UserId = #{userid,jdbcType=VARCHAR},
       </if>
@@ -209,6 +238,12 @@
       <if test="nickname != null" >
         NickName = #{nickname,jdbcType=VARCHAR},
       </if>
+      <if test="posturl != null" >
+        PostURL = #{posturl,jdbcType=VARCHAR},
+      </if>
+      <if test="isfamous != null" >
+        IsFamous = #{isfamous,jdbcType=VARCHAR},
+      </if>
       <if test="postcontent != null" >
         PostContent = #{postcontent,jdbcType=LONGVARCHAR},
       </if>
@@ -223,6 +258,7 @@
       ReadTimes = #{readtimes,jdbcType=INTEGER},
       LikedTimes = #{likedtimes,jdbcType=INTEGER},
       CollectTimes = #{collecttimes,jdbcType=INTEGER},
+      CommentTimes = #{commenttimes,jdbcType=INTEGER},
       UserId = #{userid,jdbcType=VARCHAR},
       UserName = #{username,jdbcType=VARCHAR},
       EnableComment = #{enablecomment,jdbcType=INTEGER},
@@ -231,6 +267,8 @@
       LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
       ModifyUserId = #{modifyuserid,jdbcType=VARCHAR},
       NickName = #{nickname,jdbcType=VARCHAR},
+      PostURL = #{posturl,jdbcType=VARCHAR},
+      IsFamous = #{isfamous,jdbcType=VARCHAR},
       PostContent = #{postcontent,jdbcType=LONGVARCHAR}
     where PostId = #{postid,jdbcType=VARCHAR}
   </update>
@@ -242,6 +280,7 @@
       ReadTimes = #{readtimes,jdbcType=INTEGER},
       LikedTimes = #{likedtimes,jdbcType=INTEGER},
       CollectTimes = #{collecttimes,jdbcType=INTEGER},
+      CommentTimes = #{commenttimes,jdbcType=INTEGER},
       UserId = #{userid,jdbcType=VARCHAR},
       UserName = #{username,jdbcType=VARCHAR},
       EnableComment = #{enablecomment,jdbcType=INTEGER},
@@ -249,7 +288,9 @@
       CreateTime = #{createtime,jdbcType=TIMESTAMP},
       LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
       ModifyUserId = #{modifyuserid,jdbcType=VARCHAR},
-      NickName = #{nickname,jdbcType=VARCHAR}
+      NickName = #{nickname,jdbcType=VARCHAR},
+      PostURL = #{posturl,jdbcType=VARCHAR},
+      IsFamous = #{isfamous,jdbcType=VARCHAR}
     where PostId = #{postid,jdbcType=VARCHAR}
   </update>
 </mapper>

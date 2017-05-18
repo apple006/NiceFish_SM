@@ -60,7 +60,7 @@ public class PostController extends BaseController{
 	@ResponseBody
 	public String postDetail(@PathVariable String postId, Model model) {
 		Post post = postService.getById(postId);
-		if(post!=null){
+		if(null!=post){
 			return jsonResultNoPage(post,ConstSessionName.successQueryInfo);
 		}
 		return jsonResultWithMsg("Server Error",ConstSessionName.failureQueryInfo);
@@ -77,13 +77,13 @@ public class PostController extends BaseController{
 		System.out.println(data);
 		//将 JSON 字符串转为 post 对象
 		Post post= JSONUtil.JSONToObect(data, Post.class); 
-		post.setPostId(UUIDUtil.generate());
-		post.setCreateTime(new Date());
-		post.setLastModifyTime(new Date());
-		post.setUserId("8d2a7444767f4051a0628b02e45b3e79");
-		post.setUserName("zhangfei");
+		post.setPostid(UUIDUtil.generate());
+		post.setCreatetime(new Date());
+		post.setLastmodifytime(new Date());
+		post.setUserid("8d2a7444767f4051a0628b02e45b3e79");
+		post.setUsername("zhangfei");
 		post.setStatus(0);
-		post.setModifyUserid(post.getUserId());
+		post.setModifyuserid(post.getUserid());
 		System.out.println(post.toString());
 		int i = postService.insert(post);
 		if(i==1){

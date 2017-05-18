@@ -29,7 +29,7 @@ public class BaseController {
 	
 	/**
 	 * 
-	 * 查询详细、新增记录、删除记录
+	 * 查询无分页的列表(文章分类),详细、新增记录、删除记录
 	 * 返回 JSON 字符串
 	 * @param t 实体
 	 * @return

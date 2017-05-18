@@ -8,6 +8,7 @@ public interface IClassifyService {
 	
 	//查询所有文章分类
 	List<Classify> getList();
+	int insertRecord(Classify classify);
 	//批量删除文章分类
 	//int batchDelete(String[] ids);
 	

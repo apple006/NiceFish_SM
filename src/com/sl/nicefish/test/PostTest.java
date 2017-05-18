@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.alibaba.fastjson.JSONObject;
 import com.sl.nicefish.pojo.Post;
 import com.sl.nicefish.service.IPostService;
 import com.sl.nicefish.util.UUIDUtil;
@@ -20,21 +19,23 @@ public class PostTest {
 	@Autowired
 	private IPostService postService;
 	
+
+	
 	public void insert(String title,String content){
 		Post p = new Post();
-		p.setPostId(UUIDUtil.generate());
+		p.setPostid(UUIDUtil.generate());
 		p.setNickname("张翼德");
-		p.setPostTitle(title);
-		p.setPostContent(content);
-		p.setCreateTime(new Date());
+		p.setPosttitle(title);
+		p.setPostcontent(content);
+		p.setCreatetime(new Date());
 		p.setStatus(1);
-		p.setUserId("8d2a7444767f4051a0628b02e45b3e79");
-		p.setIsOriginal(1);
-		p.setUserName("zhangfei");
-		p.setLikedTimes(100);
-		p.setReadTimes(99);
-		p.setLastModifyTime(new Date());
-		p.setEnableComment(1000);
+		p.setUserid("8d2a7444767f4051a0628b02e45b3e79");
+		p.setIsoriginal(1);
+		p.setUsername("zhangfei");
+		p.setLikedtimes(100);
+		p.setReadtimes(99);
+		p.setLastmodifytime(new Date());
+		p.setEnablecomment(1000);
 		int i = postService.insert(p);
 		System.out.println(i);
 	}

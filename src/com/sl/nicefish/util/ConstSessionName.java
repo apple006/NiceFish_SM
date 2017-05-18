@@ -32,6 +32,7 @@ public class ConstSessionName {
 	 */
 	public static final String successQueryInfo ="查询成功";
 	public static final String failureQueryInfo = "查询失败";
+	public static final String noDataInfo="无数据";
 	public static final String successInsertInfo = "新增成功";
 	public static final String failureInsertInfo = "新增失败";
 	public static final String successUpdateInfo = "修改成功";

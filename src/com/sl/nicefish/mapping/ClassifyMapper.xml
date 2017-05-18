@@ -15,8 +15,8 @@
     from classify
     where ClassifyId = #{classifyid,jdbcType=VARCHAR}
   </select>
-  
-  <select id="getList">
+   
+  <select id="getList" resultMap="BaseResultMap">
   	select 
     <include refid="Base_Column_List" />
     from classify

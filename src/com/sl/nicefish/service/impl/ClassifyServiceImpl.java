@@ -10,21 +10,23 @@ import com.sl.nicefish.pojo.Classify;
 import com.sl.nicefish.service.IClassifyService;
 
 @Service("classifyService")
-public class ClassifyServiceImpl extends AbstractBaseServiceImpl<Classify,String> 
-	implements IClassifyService {
+public class ClassifyServiceImpl implements IClassifyService
+	 {
 	
 	@Autowired
 	private ClassifyMapper classifyMapper;
 	
 	@Override
-	public void setBaseMapper() {
-		super.setBaseMapper(classifyMapper);
-	}
-
-	@Override
 	public List<Classify> getList() {
 		// TODO Auto-generated method stub
-		return null;
+		return classifyMapper.getList();
+	}
+	
+	@Override
+	public int insertRecord(Classify classify) {
+		// TODO Auto-generated method stub
+		return classifyMapper.insertSelective(classify);
 	}
 
+	
 }
